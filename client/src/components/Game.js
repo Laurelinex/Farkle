@@ -23,10 +23,10 @@ const Game = () => {
   // }
 
   useEffect(() => {
-    initialDiceArray()
+    setUpDiceArray()
   }, []);
 
-  const initialDiceArray = () => {
+  const setUpDiceArray = () => {
     let arr = [];
     for (let i = 0; i < 6; i++) {
       diceArray[i] = {};
@@ -38,13 +38,11 @@ const Game = () => {
   }
 
 
-
     
-  // const onClickButton = () => {
-  //   const dice = getDiceArray(6);
-  //   console.log(dice);
-  //   setDiceArray(dice);
-  // }
+  const onClickButton = () => {
+    rollDice();
+    console.log('roll dice');
+  };
 
 
 
@@ -53,27 +51,27 @@ const Game = () => {
   //   for (var i = 0; i < length; i++) {
   //       var randomInt = getRandomInt(1, 7)
   //       diceArray[i] = randomInt;
-  //       // const diceArray[i].id = i+1
-  //       // const diceArray[i].value = i+1;
-  //       // const diceArray[i].status = false;
   //   }
   //   return diceArray;
   // }
         
 
 
-  // function getRandomInt(min, max) {
-  //   min = Math.ceil(min);
-  //   max = Math.floor(max);
-  //   return Math.floor(Math.random() * (max - min) + min);
-  // }
+  const rollDice = () => {
+    for (let i = 0; i < 6; i++) {
+      diceArray[i].value = Math.floor((Math.random() * 6) + 1);
+    }
+    diceArray.map((die) => {
+      return (<p>{die.value}</p>)
+    })
+  }
 
-  
   return (
       <div className="dice-code">
         <h1>Dice</h1>
 
         <h3>{diceArray.value}</h3>
+        <button className='button' onClick={onClickButton}>Roll Dice</button>
 
       </div>
   );
