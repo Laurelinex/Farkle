@@ -23,7 +23,7 @@ const Game = () => {
   // }
 
   useEffect(() => {
-    setDiceArray([initialDiceArray()])
+    initialDiceArray()
   }, []);
 
   const initialDiceArray = function (i) {
@@ -31,43 +31,45 @@ const Game = () => {
       diceArray[i] = {};
       diceArray[i].id = 'id' + (i + 1);
       diceArray[i].value = i + 1;
+      setDiceArray(diceArray[i])
     }
+    return diceArray
   }
     
-  const onClickButton = () => {
-    const dice = getDiceArray(6);
-    console.log(dice);
-    setDiceArray(dice);
-  }
+  // const onClickButton = () => {
+  //   const dice = getDiceArray(6);
+  //   console.log(dice);
+  //   setDiceArray(dice);
+  // }
 
 
 
-  function getDiceArray(length){
-    const diceArray = [];
-    for (var i = 0; i < length; i++) {
-        var randomInt = getRandomInt(1, 7)
-        diceArray[i] = randomInt;
-        // const diceArray[i].id = i+1
-        // const diceArray[i].value = i+1;
-        // const diceArray[i].status = false;
-    }
-    return diceArray;
-  }
+  // function getDiceArray(length){
+  //   const diceArray = [];
+  //   for (var i = 0; i < length; i++) {
+  //       var randomInt = getRandomInt(1, 7)
+  //       diceArray[i] = randomInt;
+  //       // const diceArray[i].id = i+1
+  //       // const diceArray[i].value = i+1;
+  //       // const diceArray[i].status = false;
+  //   }
+  //   return diceArray;
+  // }
         
 
 
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-  }
+  // function getRandomInt(min, max) {
+  //   min = Math.ceil(min);
+  //   max = Math.floor(max);
+  //   return Math.floor(Math.random() * (max - min) + min);
+  // }
 
   
   return (
       <div className="dice-code">
         <h1>Dice</h1>
-        <button className="button" onClick={onClickButton}>Roll Dice</button>
-        <h3>{diceArray}</h3>
+
+        <h3>{diceArray.value}</h3>
 
       </div>
   );
