@@ -11,9 +11,3 @@ function App() {
       <Instructions />
 
       <Leaderboard />
-
-    </div>
-  );
-}
-
-export default App;
