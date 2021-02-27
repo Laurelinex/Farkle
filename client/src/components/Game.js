@@ -26,15 +26,19 @@ const Game = () => {
     initialDiceArray()
   }, []);
 
-  const initialDiceArray = function (i) {
-    for (i = 0; i < 6; i++) {
+  const initialDiceArray = () => {
+    let arr = [];
+    for (let i = 0; i < 6; i++) {
       diceArray[i] = {};
       diceArray[i].id = 'id' + (i + 1);
       diceArray[i].value = i + 1;
-      setDiceArray(diceArray[i])
+      arr.push(diceArray[i])   
     }
-    return diceArray
+    setDiceArray(arr)
   }
+
+
+
     
   // const onClickButton = () => {
   //   const dice = getDiceArray(6);
