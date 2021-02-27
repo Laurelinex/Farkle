@@ -8,12 +8,19 @@ const Leaderboard = () => {
 
     useEffect(() => {
         GameServices.getGames()
-        .then(wins => setWins(wins));
+        .then(games => setWins(games));
     }, [])
+
+    const winnerList = wins.map((win) => {
+        return <Win win={win} />;
+    });
 
     return (
         <div className="leaderboard">
             <h1>Leaderboard container</h1>
+            <>
+                {winnerList}
+            </>
         </div>
     )
 }
