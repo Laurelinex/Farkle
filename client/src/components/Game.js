@@ -2,21 +2,28 @@ import React from'react';
 import { useState } from 'react';
 
 const Game = () => {
-
-    const[randomNumber, setRandomNumber] = useState(0)
+    
+    const[diceArray, setDiceArray] = useState([]);
         const onClickButton = () => {
-        const diceCode = getDiceCode(6);
-        setRandomNumber(diceCode);
+        getDiceArray();
   }
 
-  function getDiceCode(length){
-    const code = [];
+  function getDiceArray(length){
+    const diceArray = [];
     for (var i = 0; i < length; i++) {
-      var randomInt = getRandomInt(1, 7);
-      code.push(randomInt);
+        var randomInt = getRandomInt(1, 7)
+        diceArray[i] = randomInt;
+        // const diceArray[i].id = i+1
+        // const diceArray[i].value = i+1;
+        // const diceArray[i].status = false;
     }
-    return code.join(" ");
+    return diceArray;
   }
+        
+    // const randomInt = getRandomInt(1, 7){
+    //     for (var i=0; i < 6; i++) {
+    //         diceArray[i].value(randomInt)
+    // }
 
   function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -24,12 +31,13 @@ const Game = () => {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
+
   
   return (
       <div className="dice-code">
         <h1>Dice</h1>
         <button className="button" onClick={onClickButton}>Roll Dice</button>
-        <h3>{randomNumber}</h3>
+        <h3>{diceArray}</h3>
       </div>
   );
 }
