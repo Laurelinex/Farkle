@@ -37,8 +37,7 @@ const Game = () => {
     setDiceArray(arr)
   }
 
-
-    
+ 
   const onClickButton = () => {
     rollDice();
     console.log('roll dice');
@@ -62,16 +61,19 @@ const Game = () => {
       diceArray[i].value = Math.floor((Math.random() * 6) + 1);
     }
     diceArray.map((die) => {
-      return (<p>{die.value}</p>)
-    })
+      return(
+        <li>die.value</li>
+      )
+    })  
   }
 
   return (
       <div className="dice-code">
         <h1>Dice</h1>
 
-        <h3>{diceArray.value}</h3>
+        
         <button className='button' onClick={onClickButton}>Roll Dice</button>
+
 
       </div>
   );
