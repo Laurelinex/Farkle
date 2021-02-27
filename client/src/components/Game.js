@@ -20,7 +20,11 @@ const Game = () => {
     }
       // 2: "2.png", 3: "3.png", 4: "4.png", 5: "5.png", 6: "6.png"}
     
-    const[diceArray, setDiceArray] = useState([]);
+    const[diceArray, setDiceArray] = useState([1, 2, 3, 4, 5, 6]);
+    
+
+
+
         const onClickButton = () => {
         const dice = getDiceArray(6);
         console.log(dice);
@@ -50,22 +54,20 @@ const Game = () => {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
-  const loadPictures = diceArray.map(die => {
-    return (
-             <li >
-                {/* <img src={die} width="10px"/>     */}
-            </li>
-            )
-  })
+  // const loadPictures = diceArray.map(die => {
+  //   return (
+  //            <li >
+  //               {/* <img src={die} width="10px"/>     */}
+  //           </li>
+  //           )
+  // })
   
   return (
       <div className="dice-code">
         <h1>Dice</h1>
         <button className="button" onClick={onClickButton}>Roll Dice</button>
         <h3>{diceArray}</h3>
-        <ul>
-            {loadPictures}
-        </ul>
+        
       </div>
   );
 }
