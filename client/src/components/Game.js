@@ -84,7 +84,7 @@ const Game = () => {
   }
   
   const diceList = diceArray.map((die) => {
-    return (die.image)
+    return  <DiceImage die={die} />
   });
 
 

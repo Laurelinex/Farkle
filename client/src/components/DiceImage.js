@@ -11,7 +11,7 @@ const DiceImage = ({die}) => {
 
     useEffect(() => {
         console.log("DiceImage UE triggered");
-        updateImage();
+        // updateImage();
     }, [])
     
     // const attachImage = () => {
@@ -30,26 +30,26 @@ const DiceImage = ({die}) => {
     //     }
     // };
 
-    function updateImage() {
-        var dieImage;
-        for (var i = 0; i < 6; i++) {
-                switch (diceArray[i].value) {						//update dice images
-                    case 1: dieImage = "images/1.png";
-                                    break;
-                    case 2: dieImage = "images/2.png";
-                                    break;
-                    case 3: dieImage = "images/3.png";
-                                    break;
-                    case 4: dieImage = "images/4.png";
-                                    break;
-                    case 5: dieImage = "images/5.png";
-                                    break;
-                    case 6: dieImage = "images/6.png";
-                                    break;
-                }
+    // function updateImage() {
+    //     var dieImage;
+    //     for (var i = 0; i < 6; i++) {
+    //             switch (diceArray[i].value) {						//update dice images
+    //                 case 1: dieImage = "images/1.png";
+    //                                 break;
+    //                 case 2: dieImage = "images/2.png";
+    //                                 break;
+    //                 case 3: dieImage = "images/3.png";
+    //                                 break;
+    //                 case 4: dieImage = "images/4.png";
+    //                                 break;
+    //                 case 5: dieImage = "images/5.png";
+    //                                 break;
+    //                 case 6: dieImage = "images/6.png";
+    //                                 break;
+    //             }
                 // (diceArray[i].id).attr("src", dieImage);
-        }
-    }
+    //     }
+    // }
 
     return (
         <>
