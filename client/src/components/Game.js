@@ -38,16 +38,14 @@ const Game = () => {
       diceArray[i].id = 'id' + (i + 1);
       diceArray[i].value = i + 1;
       diceArray[i].picture = dicePicturesMap[i + 1];
-      // if (diceArray[i].value === 1) {
-      //   diceArray[i].picture = {One}
-      // };
+      diceArray[i].active = true;
       arr.push(diceArray[i])   
     }
     setDiceArray(arr)
   }
 
  
-  const onClickButton = () => {
+  const onClickRollDice = () => {
     rollDice();
     console.log('roll dice');
   };
@@ -75,9 +73,18 @@ const Game = () => {
     }
     setDiceArray(arr)
   }
+
+  const toggleActive = (selectedDie) => {
+    const arr = diceArray.map((die) => { 
+      if (die.id === selectedDie.id){
+        die.active = !die.active
+      }
+    })
+    setDiceArray(arr);
+  }
   
   const diceList = diceArray.map((die) => {
-    return  <DiceImage die={die} />
+    return  <DiceImage die={die} toggleActive={toggleActive} />
   });
 
 
@@ -86,8 +93,8 @@ const Game = () => {
         <h1>Dice</h1>
 
         
-        <button className='button' onClick={onClickButton}>Roll Dice</button>
-
+        <button className='button' onClick={onClickRollDice}>Roll Dice</button>
+        
         <>{diceList}</>
         
 

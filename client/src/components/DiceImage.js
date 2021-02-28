@@ -6,7 +6,8 @@ import Four from "../images/4.png";
 import Five from "../images/5.png";
 import Six from "../images/6.png";
 
-const DiceImage = ({die}) => {
+
+const DiceImage = ({die, toggleActive}) => {
     console.log("Die component")
 
     useEffect(() => {
@@ -54,7 +55,7 @@ const DiceImage = ({die}) => {
     return (
         <>
             <p>{die.value}</p>
-            <img src={die.picture}/>
+            <img src={die.picture} onClick={() => {toggleActive(die)}}/>
         </>
     )
 }
