@@ -1,5 +1,5 @@
 import './App.css';
-import Instructions from './components/Instruction.js'
+// import Instructions from './components/Instruction.js'
 import Game from './components/Game.js'
 // import Leaderboard from './container/leaderboard.js'
 
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
      
       <Game />
-      <Instructions />
+      {/* <Instructions /> */}
 
       {/* <Leaderboard /> */}
 
