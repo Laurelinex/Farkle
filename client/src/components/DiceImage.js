@@ -54,7 +54,7 @@ const DiceImage = ({die}) => {
     return (
         <>
             <p>{die.value}</p>
-            <img src={die.picture} />
+            <img src={die.picture}/>
         </>
     )
 }

@@ -11,31 +11,21 @@ import DiceImage from "./DiceImage";
 
 const Game = () => {
 
+  // const dicePicturesMap = {
+  //   1: <button><img src={One}  /></button>,
+  //   2: <button><img src={Two}  /></button>,
+  //   3: <button><img src={Three}/></button>,
+  //   4: <button><img src={Four} /></button>,
+  //   5: <button><img src={Five} /></button>,
+  //   6: <button><img src={Six}  /></button>
+  // }
+
+  const dicePicturesMap = {
+    1: One, 2: Two, 3: Three, 4: Four, 5: Five, 6: Six
+  }
+
   const[diceArray, setDiceArray] = useState([]);
-  // const[die, setDie] = useState({});
-
-  // const DiceImage = ({roll}) => {
-  //   if (roll === 1) {
-  //     return <img src={One} alt="1" />;
-  //   } else if (roll === 2) {
-  //     return <img src={Two} alt="2" />;
-  //   } else if (roll === 3) {
-  //     return <img src={Three} alt="3" />;
-  //   } else if (roll === 4) {
-  //     return <img src={Four} alt="4" />;
-  //   } else if (roll === 5) {
-  //     return <img src={Five} alt="5" />;
-  //   } else if (roll === 6) {
-  //     return <img src={Six} alt="6" />;
-  //   }
-  // };
-
-    // 1: <img src={One} />,
-    // 2: <img src={Two} />,
-    // 3: <img src={Three} />,
-    // 4: <img src={Four} />,
-    // 5: <img src={Five} />,
-    // 6: <img src={Six} />
+  
 
   useEffect(() => {
     setUpDiceArray()
@@ -47,9 +37,10 @@ const Game = () => {
       diceArray[i] = {};
       diceArray[i].id = 'id' + (i + 1);
       diceArray[i].value = i + 1;
-      if (diceArray[i].value === 1) {
-        diceArray[i].picture = {One}
-      };
+      diceArray[i].picture = dicePicturesMap[i + 1];
+      // if (diceArray[i].value === 1) {
+      //   diceArray[i].picture = {One}
+      // };
       arr.push(diceArray[i])   
     }
     setDiceArray(arr)
@@ -77,7 +68,9 @@ const Game = () => {
   const rollDice = () => {
     let arr = [];
     for (let i = 0; i < 6; i++) {
-      diceArray[i].value = Math.floor((Math.random() * 6) + 1);
+      const randInt = Math.floor((Math.random() * 6) + 1);
+      diceArray[i].value = randInt;
+      diceArray[i].picture = dicePicturesMap[randInt];
       arr.push(diceArray[i]) 
     }
     setDiceArray(arr)
