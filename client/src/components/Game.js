@@ -47,6 +47,8 @@ const Game = () => {
       diceArray[i] = {};
       diceArray[i].id = 'id' + (i + 1);
       diceArray[i].value = i + 1;
+      if (diceArray[i] === 1) {
+        diceArray[i].picture = <img src={One} alt="1" />};
       arr.push(diceArray[i])   
     }
     setDiceArray(arr)
