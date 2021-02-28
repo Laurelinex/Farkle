@@ -25,6 +25,7 @@ const Game = () => {
   }
 
   const[diceArray, setDiceArray] = useState([]);
+  const [selectedDie, setSelectedDie] = useState(null);
   
 
   useEffect(() => {
@@ -74,17 +75,22 @@ const Game = () => {
     setDiceArray(arr)
   }
 
-  const toggleActive = (selectedDie) => {
-    const arr = diceArray.map((die) => { 
-      if (die.id === selectedDie.id){
-        die.active = !die.active
-      }
-    })
-    setDiceArray(arr);
+  const onSelectedDie = (die) => {
+    console.log("Die selected")
+    setSelectedDie(die)
   }
+
+  // const toggleActive = (selectedDie) => {
+  //   const arr = diceArray.map((die) => { 
+  //     if (die.id === selectedDie.id){
+  //       die.active = !die.active
+  //     }
+  //   })
+  //   setDiceArray(arr);
+  // }
   
   const diceList = diceArray.map((die) => {
-    return  <DiceImage die={die} toggleActive={toggleActive} />
+    return  <DiceImage die={die} onSelectedDie={onSelectedDie} />
   });
 
 
