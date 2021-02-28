@@ -47,8 +47,9 @@ const Game = () => {
       diceArray[i] = {};
       diceArray[i].id = 'id' + (i + 1);
       diceArray[i].value = i + 1;
-      if (diceArray[i] === 1) {
-        diceArray[i].picture = <img src={One} alt="1" />};
+      if (diceArray[i].value === 1) {
+        diceArray[i].picture = {One}
+      };
       arr.push(diceArray[i])   
     }
     setDiceArray(arr)
@@ -83,7 +84,7 @@ const Game = () => {
   }
   
   const diceList = diceArray.map((die) => {
-    return <DiceImage die={die} />
+    return (die.image)
   });
 
 
