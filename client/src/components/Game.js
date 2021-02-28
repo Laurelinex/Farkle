@@ -11,14 +11,6 @@ import DiceImage from "./DiceImage";
 
 const Game = () => {
 
-  // const dicePicturesMap = {
-  //   1: <button><img src={One}  /></button>,
-  //   2: <button><img src={Two}  /></button>,
-  //   3: <button><img src={Three}/></button>,
-  //   4: <button><img src={Four} /></button>,
-  //   5: <button><img src={Five} /></button>,
-  //   6: <button><img src={Six}  /></button>
-  // }
 
   const dicePicturesMap = {
     1: One, 2: Two, 3: Three, 4: Four, 5: Five, 6: Six
@@ -53,17 +45,6 @@ const Game = () => {
 
 
 
-  // function getDiceArray(length){
-  //   const diceArray = [];
-  //   for (var i = 0; i < length; i++) {
-  //       var randomInt = getRandomInt(1, 7)
-  //       diceArray[i] = randomInt;
-  //   }
-  //   return diceArray;
-  // }
-        
-
-
   const rollDice = () => {
     let arr = [];
     for (let i = 0; i < 6; i++) {
@@ -77,6 +58,11 @@ const Game = () => {
 
   const onSelectedDie = (die) => {
     console.log("Die selected")
+    if (die.active) {
+      die.active = !die.active
+    } else if (!die.active) {
+      die.active = true
+    } 
     setSelectedDie(die)
   }
 
@@ -89,8 +75,8 @@ const Game = () => {
   //   setDiceArray(arr);
   // }
   
-  const diceList = diceArray.map((die) => {
-    return  <DiceImage die={die} onSelectedDie={onSelectedDie} />
+  const diceList = diceArray.map((die, index) => {
+    return  <DiceImage die={die} onSelectedDie={onSelectedDie} key={index} />
   });
 
 
