@@ -3,12 +3,22 @@
 }
 
 /* Structure outlines */
+
+.title-logo {
+  border: solid yellow;
+}
+
 .game {
   border: solid red;
+  /* display: flex; */
+  justify-content: space-around;
 }
 
 .all-dice {
   border: solid blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .die {

@@ -58,20 +58,23 @@ const Game = () => {
 
   const onSelectedDie = (die) => {
     console.log("Die selected")
-    if (die.active) {
-      die.active = !die.active
-    } else if (!die.active) {
-      die.active = true
-    } 
+    if (die.active)
+      {
+          die.active = false;
+      }
+      else
+      {
+          die.active = true;
+      }
     setSelectedDie(die)
   }
 
   // const toggleActive = (selectedDie) => {
   //   const arr = diceArray.map((die) => { 
-  //     if (die.id === selectedDie.id){
-  //       die.active = !die.active
-  //     }
-  //   })
+    //   if (die.id === selectedDie.id){
+    //     die.active = !die.active
+    //   }
+    // })
   //   setDiceArray(arr);
   // }
   
@@ -82,8 +85,7 @@ const Game = () => {
 
   return (
       <div className="game">
-        <h1>Dice</h1>
-
+        {/* <h1>Dice</h1> */}
         
         <button className='button' onClick={onClickRollDice}>Roll Dice</button>
         
