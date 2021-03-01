@@ -41,6 +41,15 @@
 
 .die {
   border: solid teal;
+  margin: 5px;
+}
+
+/* .roll-n-bank-buttons {
+  display: flex;
+} */
+
+.die > button {
+  display: contents;
 }
 
 .instructions {

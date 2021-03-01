@@ -72,9 +72,10 @@ const Game = () => {
         <div className="all-dice">
           {diceList}
         </div>
-
-        <button className='button' onClick={onClickRollDice}>Roll Dice</button>
-        <button className='button'>Bank Points</button>
+        <div className="roll-n-bank-buttons">
+          <button className='roll-button' onClick={onClickRollDice}>Roll Dice</button>
+          <button className='bank-button'>Bank Points</button>
+        </div>
         
       </div>
   );
