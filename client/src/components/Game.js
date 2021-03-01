@@ -7,7 +7,7 @@ import Four from "../images/4.png";
 import Five from "../images/5.png";
 import Six from "../images/6.png";
 import "./game.css";
-import DiceImage from "./DiceImage";
+import Die from "./Die";
 
 const Game = () => {
 
@@ -76,7 +76,7 @@ const Game = () => {
   // }
   
   const diceList = diceArray.map((die, index) => {
-    return  <DiceImage die={die} onSelectedDie={onSelectedDie} key={index} />
+    return  <Die die={die} onSelectedDie={onSelectedDie} key={index} />
   });
 
 

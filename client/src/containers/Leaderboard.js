@@ -11,8 +11,8 @@ const Leaderboard = () => {
         .then(games => setWins(games));
     }, [])
 
-    const winnerList = wins.map((win) => {
-        return <Win win={win} />;
+    const winnerList = wins.map((win, index) => {
+        return <Win win={win} key={index}/>;
     });
 
     return (
