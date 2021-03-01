@@ -17,7 +17,7 @@ const Game = () => {
   const dicePicturesMap = {
     1: One, 2: Two, 3: Three, 4: Four, 5: Five, 6: Six
   }
-  
+
   useEffect(() => {
     setUpDiceArray()
   }, []);
@@ -43,9 +43,11 @@ const Game = () => {
   const rollDice = () => {
     let arr = [];
     for (let i = 0; i < 6; i++) {
-      const randInt = Math.floor((Math.random() * 6) + 1);
-      diceArray[i].value = randInt;
-      diceArray[i].picture = dicePicturesMap[randInt];
+      if (diceArray[i].active === true){
+        const randInt = Math.floor((Math.random() * 6) + 1);
+        diceArray[i].value = randInt;
+        diceArray[i].picture = dicePicturesMap[randInt];
+      }
       // diceArray[i].active = true;
       arr.push(diceArray[i]) 
     }
