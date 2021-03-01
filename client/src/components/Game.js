@@ -62,9 +62,9 @@ const Game = () => {
 			}
 		}
 
-
     rollDice();
     console.log('roll dice');
+
   };
 
   const rollDice = () => {
@@ -196,6 +196,20 @@ const Game = () => {
      setRollScore (tempScore);
   }
 
+  const onClickBankScore = () => {
+    let bankTotal = 0;
+    bankTotal = roundScore + rollScore;
+    if (player1Turn === true){
+    setPlayer1Total(bankTotal);
+    } else {
+      setPlayer2Total(bankTotal);
+    }
+    setRollScore(0);
+    setRoundScore(0);
+  };
+
+  
+
   return (
       <div className="dice-code">
         <h1>Player</h1>
@@ -205,6 +219,7 @@ const Game = () => {
         <h1>Dice</h1>
 
         <button className='button' onClick={onClickRollDice}>Roll Dice</button>
+        <button className='button' onClick={onClickBankScore}>Bank Score</button>
         
         <>{diceList}</>
         <hr/>
@@ -230,6 +245,8 @@ const Game = () => {
       )
 };
 export default Game;
+
+
 
 
 
