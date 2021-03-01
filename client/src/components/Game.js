@@ -201,9 +201,9 @@ const Game = () => {
     let bankTotal = 0;
     bankTotal = roundScore + rollScore;
     if (player1Turn === true){
-    setPlayer1Total(bankTotal);
+    setPlayer1Total(player1Total + bankTotal);
     } else {
-      setPlayer2Total(bankTotal);
+      setPlayer2Total(player2Total + bankTotal);
     }
     setRollScore(0);
     setRoundScore(0);
@@ -229,11 +229,21 @@ const Game = () => {
     setPlayer2Total(0);
   }
 
+  const alertWinner = () => {
+    if (player1Total >= 1000){
+      return ("player 1 wins")
+    } else if (player2Total >= 1000) {
+      return ("player 2 wins")
+    } else if (player1Total < 1000 && player2Total < 1000) {
+      return ("all to play for")
+    }
+  }
+
   return (
       <div className="dice-code">
-        <h1>Player</h1>
-        <p>{playerToPlay()}</p>
-        <p>{calculateRollScore}</p>
+        <h3>Player: {playerToPlay()}</h3>
+
+        <p>Winner: {alertWinner()}</p>
 
 
         <h1>Dice</h1>
