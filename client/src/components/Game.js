@@ -12,6 +12,7 @@ import Die from "./Die";
 const Game = () => {
 
   const [diceArray, setDiceArray] = useState([]);
+  const [rollScore, setRollScore] = useState(0);
 
   const dicePicturesMap = {
     1: One, 2: Two, 3: Three, 4: Four, 5: Five, 6: Six
@@ -45,7 +46,7 @@ const Game = () => {
       const randInt = Math.floor((Math.random() * 6) + 1);
       diceArray[i].value = randInt;
       diceArray[i].picture = dicePicturesMap[randInt];
-      diceArray[i].active = true;
+      // diceArray[i].active = true;
       arr.push(diceArray[i]) 
     }
     setDiceArray(arr)
@@ -59,12 +60,96 @@ const Game = () => {
     let dice = arr[id]
     dice.active = !dice.active
     console.log("modified dice", dice)
-    setDiceArray(arr)
+    setDiceArray(arr);
+    calculateRollScore();
   }
   
   const diceList = diceArray.map((die, index) => {
     return  <Die die={die} onSelectedDie={onSelectedDie} key={index} />
   });
+
+
+
+  const calculateRollScore = () => {
+    let tempScore = 0
+
+    var ones = [];
+    var twos = [];
+    var threes = [];
+    var fours = [];
+    var fives = [];
+    var sixes = [];
+
+    var scoreArray = [];
+
+    for (var i = 0; i < 6; i++) {						
+      if (diceArray[i].active === false) {
+        switch (diceArray[i].value) {
+          case 1: ones.push(1);
+                  break;
+          case 2: twos.push(2);
+                  break;
+          case 3: threes.push(3);
+                  break;
+          case 4: fours.push(4);
+                  break;
+          case 5: fives.push(5);
+                  break;
+          case 6: sixes.push(6);
+                  break;
+        }
+      }
+    }
+    switch (ones.length) {
+      case 1: scoreArray[0] = 100; break;
+      case 2: scoreArray[0] = 200; break;
+      case 3: scoreArray[0] = 1000; break;
+      case 4: scoreArray[0] = 2000; break;
+      case 5: scoreArray[0] = 3000; break;
+      case 6: scoreArray[0] = 4000; break;
+      default: scoreArray[0] = 0;
+    }
+    switch (twos.length) {
+      case 3: scoreArray[1] = 200; break;
+      case 4: scoreArray[1] = 400; break;
+      case 5: scoreArray[1] = 600; break;
+      case 6: scoreArray[1] = 800; break;
+      default: scoreArray[1] = 0;
+    }
+    switch (threes.length) {
+      case 3: scoreArray[2] = 300; break;
+      case 4: scoreArray[2] = 600; break;
+      case 5: scoreArray[2] = 900; break;
+      case 6: scoreArray[2] = 1200; break;
+      default: scoreArray[2] = 0;
+    }
+    switch (fours.length) {
+      case 3: scoreArray[3] = 400; break;
+      case 4: scoreArray[3] = 800; break;
+      case 5: scoreArray[3] = 1200; break;
+      case 6: scoreArray[3] = 1600; break;
+      default: scoreArray[3] = 0;
+    }
+    switch (fives.length) {
+      case 1: scoreArray[4] = 50; break;
+      case 2: scoreArray[4] = 100; break;
+      case 3: scoreArray[4] = 500; break;
+      case 4: scoreArray[4] = 1000; break;
+      case 5: scoreArray[4] = 1500; break;
+      case 6: scoreArray[4] = 2000; break;
+      default: scoreArray[4] = 0;
+    }
+    switch (sixes.length) {
+      case 3: scoreArray[5] = 600; break;
+      case 4: scoreArray[5] = 1200; break;
+      case 5: scoreArray[5] = 1800; break;
+      case 6: scoreArray[5] = 2400; break;
+      default: scoreArray[5] = 0;
+    }
+
+     tempScore = scoreArray[0] + scoreArray[1] + scoreArray[2] + scoreArray[3] + scoreArray[4] + scoreArray[5];
+     setRollScore (tempScore);
+  }
 
   return (
       <div className="dice-code">
@@ -73,6 +158,8 @@ const Game = () => {
         <button className='button' onClick={onClickRollDice}>Roll Dice</button>
         
         <>{diceList}</>
+        <hr/>
+        <>Roll Score: {rollScore}</>
         
       </div>
   );
