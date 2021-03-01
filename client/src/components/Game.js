@@ -166,15 +166,18 @@ const Game = () => {
         <>{diceList}</>
         <hr/>
         <>Roll Score: {rollScore}</>
+        <br></br>
         <div className="player-scores">
           <div className="P-score">
-            <h5>Player One</h5>
+            <h4>Player One</h4>
+            <br></br>
             <p>Roll: {rollScore}</p>
             <p>Round: {roundScore}</p>
             <p>Total: {player1Total}</p>
           </div>
           <div className="P-score">
-            <h5>Player Two</h5>
+            <h4>Player Two</h4>
+            <br></br>
             <p>Roll: {rollScore}</p>
             <p>Round: {roundScore}</p>
             <p>Total: {player2Total}</p>
