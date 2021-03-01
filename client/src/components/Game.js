@@ -13,6 +13,10 @@ const Game = () => {
 
   const [diceArray, setDiceArray] = useState([]);
   const [rollScore, setRollScore] = useState(0);
+  const [roundScore, setRoundScore] = useState(0);
+  const [player1Total, setPlayer1Total] = useState(0);
+  const [player2Total, setPlayer2Total] = useState(0);
+  const [player1Turn, setPlayer1Turn] = useState(true);
 
   const dicePicturesMap = {
     1: One, 2: Two, 3: Three, 4: Four, 5: Five, 6: Six
