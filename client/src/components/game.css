@@ -2,6 +2,22 @@ img {
     max-width: 30px;
 }
 
+.player-scores {
+    display: flex;
+    justify-content: center;
+}
+
+.P-score {
+    border: solid black;
+    border-radius: 25%;
+    padding: 10px;
+    margin: 5px;
+}
+
+.P-score > p, h4 {
+    margin: 0;
+}
+
 /* button {
     display: inline-block;
     height: 134px;
