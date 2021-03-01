@@ -16,7 +16,7 @@ const Game = () => {
   const [roundScore, setRoundScore] = useState(0);
   const [player1Total, setPlayer1Total] = useState(0);
   const [player2Total, setPlayer2Total] = useState(0);
-  const [player1Turn, setPlayer1Turn] = useState(true);
+  const [player1Turn, setPlayer1Turn] = useState(0);
 
   const dicePicturesMap = {
     1: One, 2: Two, 3: Three, 4: Four, 5: Five, 6: Six
@@ -33,7 +33,7 @@ const Game = () => {
       diceArray[i].id = i;
       diceArray[i].value = i + 1;
       diceArray[i].picture = dicePicturesMap[i + 1];
-      diceArray[i].active = true;
+      diceArray[i].active = 0;
       arr.push(diceArray[i])   
     }
     setDiceArray(arr)
@@ -44,6 +44,7 @@ const Game = () => {
     tempRoundScore = roundScore + rollScore;
     setRoundScore(tempRoundScore);
     setRollScore(0);
+    
 
     rollDice();
     console.log('roll dice');
@@ -52,7 +53,7 @@ const Game = () => {
   const rollDice = () => {
     let arr = [];
     for (let i = 0; i < 6; i++) {
-      if (diceArray[i].active === true){
+      if (diceArray[i].active === 0){
         const randInt = Math.floor((Math.random() * 6) + 1);
         diceArray[i].value = randInt;
         diceArray[i].picture = dicePicturesMap[randInt];
@@ -69,7 +70,23 @@ const Game = () => {
     console.log(arr)
     let id = die.id;
     let dice = arr[id]
-    dice.active = !dice.active
+
+    if (dice.active === 0 || dice.active === 1) {																	
+      if (dice.active === 0) {															
+        dice.active = 1;
+      } else {
+        dice.active = 0;
+      }
+    }
+
+
+    // if (dice.active === 0) {
+    //     dice.active =1;
+    //   }
+    //     else {
+    //       dice.active = 0;
+    //     }
+    //     }
     console.log("modified dice", dice)
     setDiceArray(arr);
     calculateRollScore();
@@ -94,7 +111,7 @@ const Game = () => {
     var scoreArray = [];
 
     for (var i = 0; i < 6; i++) {						
-      if (diceArray[i].active === false) {
+      if (diceArray[i].active === 1) {
         switch (diceArray[i].value) {
           case 1: ones.push(1);
                   break;
@@ -170,7 +187,7 @@ const Game = () => {
         
         <>{diceList}</>
         <hr/>
-        <>Roll Score: {rollScore}</>
+        <>Roll Score: {rollScore}</><br/>
         <>Round Score: {roundScore}</>
         
       </div>
