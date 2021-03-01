@@ -206,9 +206,24 @@ const Game = () => {
     }
     setRollScore(0);
     setRoundScore(0);
+    switchPlayer();
+    setUpDiceArray();
   };
 
-  
+  const switchPlayer = () => {
+    if (player1Turn === true){
+      setPlayer1Turn(false);
+    }
+  }
+
+  const onClickResetGame = () => {
+    setUpDiceArray();
+    setPlayer1Turn(true);
+    setRollScore(0);
+    setRoundScore(0);
+    setPlayer1Total(0);
+    setPlayer2Total(0);
+  }
 
   return (
       <div className="dice-code">
@@ -241,6 +256,7 @@ const Game = () => {
             <p>Total: {player2Total}</p>
           </div>
       </div>
+      <button className='button' onClick={onClickResetGame}>New Game</button>
       </div>
       )
 };
