@@ -25,7 +25,7 @@ const Game = () => {
     let arr = [];
     for (let i = 0; i < 6; i++) {
       diceArray[i] = {};
-      diceArray[i].id = i + 1;
+      diceArray[i].id = i;
       diceArray[i].value = i + 1;
       diceArray[i].picture = dicePicturesMap[i + 1];
       diceArray[i].active = true;
