@@ -81,13 +81,15 @@ const Game = () => {
 
 
   return (
-      <div className="dice-code">
+      <div className="game">
         <h1>Dice</h1>
 
         
         <button className='button' onClick={onClickRollDice}>Roll Dice</button>
         
-        <>{diceList}</>
+        <div className="all-dice">
+          {diceList}
+        </div>
         
 
       </div>
