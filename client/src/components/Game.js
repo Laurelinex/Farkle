@@ -44,7 +44,13 @@ const Game = () => {
     tempRoundScore = roundScore + rollScore;
     setRoundScore(tempRoundScore);
     setRollScore(0);
-    
+
+    for (var i = 0; i < 6; i++) {
+			if (diceArray[i].active === 1) {
+				diceArray[i].active = -1;
+			}
+		}
+
 
     rollDice();
     console.log('roll dice');
