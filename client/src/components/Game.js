@@ -40,6 +40,11 @@ const Game = () => {
   }
 
   const onClickRollDice = () => {
+    let tempRoundScore = 0;
+    tempRoundScore = roundScore + rollScore;
+    setRoundScore(tempRoundScore);
+    setRollScore(0);
+
     rollDice();
     console.log('roll dice');
   };
@@ -166,6 +171,7 @@ const Game = () => {
         <>{diceList}</>
         <hr/>
         <>Roll Score: {rollScore}</>
+        <>Round Score: {roundScore}</>
         
       </div>
   );
