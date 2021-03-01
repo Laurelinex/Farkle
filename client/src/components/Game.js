@@ -11,15 +11,12 @@ import Die from "./Die";
 
 const Game = () => {
 
+  const [diceArray, setDiceArray] = useState([]);
 
   const dicePicturesMap = {
     1: One, 2: Two, 3: Three, 4: Four, 5: Five, 6: Six
   }
-
-  const[diceArray, setDiceArray] = useState([]);
-  const [selectedDie, setSelectedDie] = useState(null);
   
-
   useEffect(() => {
     setUpDiceArray()
   }, []);
@@ -28,7 +25,7 @@ const Game = () => {
     let arr = [];
     for (let i = 0; i < 6; i++) {
       diceArray[i] = {};
-      diceArray[i].id = 'id' + (i + 1);
+      diceArray[i].id = i + 1;
       diceArray[i].value = i + 1;
       diceArray[i].picture = dicePicturesMap[i + 1];
       diceArray[i].active = true;
@@ -37,13 +34,10 @@ const Game = () => {
     setDiceArray(arr)
   }
 
- 
   const onClickRollDice = () => {
     rollDice();
     console.log('roll dice');
   };
-
-
 
   const rollDice = () => {
     let arr = [];
@@ -51,45 +45,35 @@ const Game = () => {
       const randInt = Math.floor((Math.random() * 6) + 1);
       diceArray[i].value = randInt;
       diceArray[i].picture = dicePicturesMap[randInt];
+      diceArray[i].active = true;
       arr.push(diceArray[i]) 
     }
     setDiceArray(arr)
   }
 
   const onSelectedDie = (die) => {
-    console.log("Die selected")
-    if (die.active) {
-      die.active = !die.active
-    } else if (!die.active) {
-      die.active = true
-    } 
-    setSelectedDie(die)
+    console.log("die passed in", die)
+    let arr = [...diceArray]
+    console.log(arr)
+    let id = die.id;
+    let dice = arr[id]
+    dice.active = !dice.active
+    console.log("modified dice", dice)
+    setDiceArray(arr)
   }
-
-  // const toggleActive = (selectedDie) => {
-  //   const arr = diceArray.map((die) => { 
-  //     if (die.id === selectedDie.id){
-  //       die.active = !die.active
-  //     }
-  //   })
-  //   setDiceArray(arr);
-  // }
   
   const diceList = diceArray.map((die, index) => {
     return  <Die die={die} onSelectedDie={onSelectedDie} key={index} />
   });
 
-
   return (
       <div className="dice-code">
         <h1>Dice</h1>
 
-        
         <button className='button' onClick={onClickRollDice}>Roll Dice</button>
         
         <>{diceList}</>
         
-
       </div>
   );
 }
