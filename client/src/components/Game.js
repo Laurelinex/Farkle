@@ -78,7 +78,7 @@ const Game = () => {
       // diceArray[i].active = true;
       arr.push(diceArray[i]) 
     }
-    setDiceArray(arr)
+    setDiceArray(arr);
   }
 
   const onSelectedDie = (die) => {
@@ -194,6 +194,7 @@ const Game = () => {
 
      tempScore = scoreArray[0] + scoreArray[1] + scoreArray[2] + scoreArray[3] + scoreArray[4] + scoreArray[5];
      setRollScore (tempScore);
+
   }
 
   const onClickBankScore = () => {
@@ -213,8 +214,11 @@ const Game = () => {
   const switchPlayer = () => {
     if (player1Turn === true){
       setPlayer1Turn(false);
+    } else {
+      setPlayer1Turn(true);
     }
-  }
+  };
+
 
   const onClickResetGame = () => {
     setUpDiceArray();
@@ -229,6 +233,7 @@ const Game = () => {
       <div className="dice-code">
         <h1>Player</h1>
         <p>{playerToPlay()}</p>
+        <p>{calculateRollScore}</p>
 
 
         <h1>Dice</h1>
