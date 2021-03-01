@@ -2,6 +2,14 @@ img {
     max-width: 30px;
 }
 
+.player-scores {
+    display: flex;
+}
+
+.P-score {
+    border: solid black;
+}
+
 /* button {
     display: inline-block;
     height: 134px;
