@@ -16,14 +16,16 @@ const Game = () => {
   const [roundScore, setRoundScore] = useState(0);
   const [player1Total, setPlayer1Total] = useState(0);
   const [player2Total, setPlayer2Total] = useState(0);
-  const [player1Turn, setPlayer1Turn] = useState(0);
+  const [player1Turn, setPlayer1Turn] = useState(true);
 
   const dicePicturesMap = {
     1: One, 2: Two, 3: Three, 4: Four, 5: Five, 6: Six
   }
 
   useEffect(() => {
-    setUpDiceArray()
+    setUpDiceArray();
+    playerToPlay();
+
   }, []);
 
   const setUpDiceArray = () => {
@@ -39,7 +41,16 @@ const Game = () => {
     setDiceArray(arr)
   }
 
+  const playerToPlay = () => {
+  	if (player1Turn === true) {
+      return "player 1 start your round by rolling the dice.";
+    } else {
+      return "player 2 start your round by rolling the dice.";
+    }
+  }
+
   const onClickRollDice = () => {
+
     let tempRoundScore = 0;
     tempRoundScore = roundScore + rollScore;
     setRoundScore(tempRoundScore);
@@ -187,6 +198,10 @@ const Game = () => {
 
   return (
       <div className="dice-code">
+        <h1>Player</h1>
+        <p>{playerToPlay()}</p>
+
+
         <h1>Dice</h1>
 
         <button className='button' onClick={onClickRollDice}>Roll Dice</button>
@@ -210,11 +225,14 @@ const Game = () => {
             <p>Round: {roundScore}</p>
             <p>Total: {player2Total}</p>
           </div>
-        </div>
-        
       </div>
-  );
-}
-
-
+      </div>
+      )
+};
 export default Game;
+
+
+
+
+
+
