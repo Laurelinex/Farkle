@@ -4,10 +4,7 @@ const Instructions = () => {
     return(
         <div className="instructions">
 
-            <h1>Welcome to Farkle! From the world of Kingdom Come: Deliverance comes a Bohemian game of chance for peasants and noblemen alike. </h1>
-            <h2>What better way to distract yourself from the sacking of your village by enemy marauders?</h2>
-
-            <h1>Farkle: The Rules!</h1>
+            <h2>Farkle: The Rules!</h2>
             <p>Reprisals for basic mistakes will be swift and brutal so please attend carefuly.</p>
 
             <h3>Rolling, Selecting and Banking</h3>

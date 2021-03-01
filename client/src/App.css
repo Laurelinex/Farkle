@@ -1,11 +1,18 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-areas: 
+  'header header header header header header'
+  'game game game game leaderboard leaderboard'
+  'instructions instructions instructions instructions leaderboard leaderboard'
+  'footer footer footer footer footer footer';
 }
 
 /* Structure outlines */
 
 .header {
   border: solid hotpink;
+  grid-area: header;
 }
 
 .title-logo {
@@ -14,12 +21,15 @@
 
 .footer {
   border: solid greenyellow;
+  grid-area: footer;
 }
 
 .game {
   border: solid red;
-  /* display: flex; */
+  grid-area: game;
+  display: flex;
   justify-content: space-around;
+  padding: 5%;
 }
 
 .all-dice {
@@ -35,10 +45,12 @@
 
 .instructions {
   border: solid green;
+  grid-area: instructions;
 }
 
 .leaderboard {
   border: solid orange;
+  grid-area: leaderboard;
 }
 
 .win-item {
