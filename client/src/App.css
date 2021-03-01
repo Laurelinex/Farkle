@@ -4,8 +4,16 @@
 
 /* Structure outlines */
 
+.header {
+  border: solid hotpink;
+}
+
 .title-logo {
   border: solid yellow;
+}
+
+.footer {
+  border: solid greenyellow;
 }
 
 .game {
