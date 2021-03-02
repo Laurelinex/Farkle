@@ -1,6 +1,8 @@
-
-img {
-    max-width: 30px;
+.all-dice {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 200px;
 }
 
 .player-scores {

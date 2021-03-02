@@ -1,7 +1,6 @@
 import './Die.css'
 
 const Die = ({die, onSelectedDie}) => {
-    console.log("Die component")
 
     if (die.active !== 0) {
         return (

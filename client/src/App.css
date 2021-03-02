@@ -5,7 +5,9 @@
   background-size: cover;
   /* background-blend-mode: ; */
   background-color: #3E1511;
-  padding: 20px;
+  padding: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 * {
@@ -25,7 +27,7 @@
 
 .grid-container {
   display: grid;
-  gap: 10px;
+  gap: 1%;
   grid-template-areas: 
   'game leaderboard'
   'instructions leaderboard';

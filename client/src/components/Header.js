@@ -7,7 +7,7 @@ const Header = () => {
                 <h1>[title or logo]</h1>
             </div>
             <div className="intro">
-                <h4>Welcome to Farkle! From the world of Kingdom Come: Deliverance comes a Bohemian game of chance for peasants and noblemen alike. </h4>
+                <h4>Welcome to Farkle! From medieval times comes a Bohemian game of chance for peasants and noblemen alike. </h4>
                 <p>What better way to distract yourself from the sacking of your village by enemy marauders?</p>
             </div>
         </div>

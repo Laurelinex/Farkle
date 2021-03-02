@@ -1,8 +1,11 @@
 .Die { 
     font-size:5em; 
     padding:0.1em; 
-    color:rgb(156, 16, 39); 
 } 
+
+svg {
+  fill: rgb(156, 16, 39);
+}
 
 .die {
   margin: 5px;
@@ -14,13 +17,13 @@
   opacity: 0.5;
 }
 
-/* i.Die {
-    background-color: hotpink;
-    margin: 2px;
+i.Die {
+    /* background-color: hotpink;
+    margin: 2px; */
     display: flex;
     align-items: center;
     justify-content: center;
-} */
+}
 
 /* Applying Animation */
 .Die-shaking{ 

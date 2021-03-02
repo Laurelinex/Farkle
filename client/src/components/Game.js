@@ -1,18 +1,12 @@
 import React from'react';
 import { useState, useEffect } from 'react';
-import One from "../images/1.png";
 import { FaDiceOne } from "react-icons/fa";
 import { FaDiceTwo } from "react-icons/fa";
 import { FaDiceThree } from "react-icons/fa";
 import { FaDiceFour } from "react-icons/fa";
 import { FaDiceFive } from "react-icons/fa";
 import { FaDiceSix } from "react-icons/fa";
-// import Two from "../images/2.png";
-// import Three from "../images/3.png";
-// import Four from "../images/4.png";
-// import Five from "../images/5.png";
-// import Six from "../images/6.png";
-import "./game.css";
+import "./Game.css";
 import Die from "./Die";
 
 const Game = () => {
@@ -23,7 +17,7 @@ const Game = () => {
   const [player1Total, setPlayer1Total] = useState(0);
   const [player2Total, setPlayer2Total] = useState(0);
   const [player1Turn, setPlayer1Turn] = useState(true);
-  const [message, setMessage] = useState("hello");
+  const [message, setMessage] = useState("Roll them dice.");
 
   const dicePicturesMap = {
     1: <FaDiceOne />, 2: <FaDiceTwo />, 3: <FaDiceThree />, 4: <FaDiceFour />, 5: <FaDiceFive />, 6: <FaDiceSix />
@@ -48,6 +42,7 @@ const Game = () => {
     setDiceArray(arr)
   }
 
+  // To change for a set message state
   const playerToPlay = () => {
   	if (player1Turn === true) {
       return " One start your round by rolling the dice.";
@@ -90,7 +85,7 @@ const Game = () => {
   }
 
   const onSelectedDie = (die) => {
-    console.log("die passed in", die)
+    // console.log("die passed in", die)
     let arr = [...diceArray]
     console.log(arr)
     let id = die.id;
@@ -104,7 +99,7 @@ const Game = () => {
       }
     }
 
-    console.log("modified dice", dice)
+    // console.log("modified dice", dice)
     setDiceArray(arr);
     calculateRollScore();
   }
@@ -229,6 +224,7 @@ const Game = () => {
     setPlayer2Total(0);
   }
 
+  // To change for a set message state
   const alertWinner = () => {
     if (player1Total >= 1000){
       return ("Player One Triumphs")
@@ -285,6 +281,7 @@ const Game = () => {
     return false;
   }
 
+  // To change for a set message state align with top messages
   const getFarkleStatus = () => {
 
     let isFarkle = !findTriples() && !checkOne() && !checkFive();
