@@ -1,27 +1,27 @@
 import { useState } from 'react';
-import { verifyPlayer } from '../services/PlayersServices';
+import { addPlayer } from '../services/PlayersServices';
 
 const PlayerForm = () => {
-    const [playerOne, setPlayerOne] = useState('');
-    const [playerTwo, setPlayerTwo] = useState('');
+    const [player, setPlayer] = useState('');
+    // const [playerTwo, setPlayerTwo] = useState('');
 
-    const handlePlayerOneName = event => {
-        setPlayerOne(event.target.value);
+    const handlePlayerName = event => {
+        setPlayer(event.target.value);
     };
-    const handlePlayerTwoName = event => {
-        setPlayerTwo(event.target.value);
-    };
+    // const handlePlayerTwoName = event => {
+    //     setPlayerTwo(event.target.value);
+    // };
 
     const handleSubmit = event => {
         event.preventDefault();
-        verifyPlayer({
-            playerName: playerOne
+        addPlayer({
+            playerName: player
         });
-        verifyPlayer({
-            playerName: playerTwo
-        })
-        setPlayerOne("");
-        setPlayerTwo("");
+        // verifyPlayer({
+        //     playerName: playerTwo
+        // })
+        setPlayer("");
+        // setPlayerTwo("");
       }
 
     // const onButtonPress = () => {
@@ -34,7 +34,22 @@ const PlayerForm = () => {
 
     return (
         <form onSubmit={handleSubmit} className="player-form">
+
             <div className="player-input">
+            <label htmlFor="player-form">New Player Name:</label>
+                <input
+                    maxLength={20}
+                    className="input"
+                    type="text"
+                    name="player1input"
+                    value={player}
+                    onChange={handlePlayerName}
+                    required
+                />
+                <input type="submit" name="submit" value="Save" />
+            </div>
+        
+            {/* <div className="player-input">
             <label htmlFor="player1-form">Player One:</label>
                 <input
                     maxLength={20}
@@ -59,7 +74,7 @@ const PlayerForm = () => {
                 />
                 
             </div>
-            <input type="submit" name="submit" value="Save" />
+            <input type="submit" name="submit" value="Save" /> */}
             
         </form>
     );

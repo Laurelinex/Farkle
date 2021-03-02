@@ -1,20 +1,31 @@
 const baseURL = 'http://localhost:5000/api/players/';
 
-export const verifyPlayer = (playerName) => {
-    /* 
-        Verifycation method posting the current user
-        to the back end (where it will be decided whether
-            to create new user or fetch an existing one)
-    */
-    return fetch(baseURL + 'verify-user', { 
+// export const verifyPlayer = (playerName) => {
+//     /* 
+//         Verifycation method posting the current user
+//         to the back end (where it will be decided whether
+//             to create new user or fetch an existing one)
+//     */
+//     return fetch(baseURL + 'verify-user', { 
+//         method: 'POST',
+//         body: JSON.stringify({ playerName }),
+//         headers: {
+//             "Content-Type": "application/json"
+//         }
+//     })
+//     .then(res => res.json()) // returning the result of the first promise (just the request) 
+//     .catch(console.error);
+// };
+
+export const addPlayer = (newPlayer) => {
+    return fetch(baseURL, {
         method: 'POST',
-        body: JSON.stringify({ playerName }),
+        body: JSON.stringify(newPlayer),
         headers: {
-            "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         }
-    })
-    .then(res => res.json()) // returning the result of the first promise (just the request) 
-    .catch(console.error);
+      })
+        .then(res => res.json());
 };
 
 export const fetchAll = () => {
