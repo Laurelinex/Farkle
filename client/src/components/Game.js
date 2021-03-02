@@ -1,11 +1,17 @@
 import React from'react';
 import { useState, useEffect } from 'react';
 import One from "../images/1.png";
-import Two from "../images/2.png";
-import Three from "../images/3.png";
-import Four from "../images/4.png";
-import Five from "../images/5.png";
-import Six from "../images/6.png";
+import { FaDiceOne } from "react-icons/fa";
+import { FaDiceTwo } from "react-icons/fa";
+import { FaDiceThree } from "react-icons/fa";
+import { FaDiceFour } from "react-icons/fa";
+import { FaDiceFive } from "react-icons/fa";
+import { FaDiceSix } from "react-icons/fa";
+// import Two from "../images/2.png";
+// import Three from "../images/3.png";
+// import Four from "../images/4.png";
+// import Five from "../images/5.png";
+// import Six from "../images/6.png";
 import "./game.css";
 import Die from "./Die";
 
@@ -19,7 +25,7 @@ const Game = () => {
   const [player1Turn, setPlayer1Turn] = useState(true);
 
   const dicePicturesMap = {
-    1: One, 2: Two, 3: Three, 4: Four, 5: Five, 6: Six
+    1: <FaDiceOne />, 2: <FaDiceTwo />, 3: <FaDiceThree />, 4: <FaDiceFour />, 5: <FaDiceFive />, 6: <FaDiceSix />
   }
 
   useEffect(() => {
@@ -97,14 +103,6 @@ const Game = () => {
       }
     }
 
-
-    // if (dice.active === 0) {
-    //     dice.active =1;
-    //   }
-    //     else {
-    //       dice.active = 0;
-    //     }
-    //     }
     console.log("modified dice", dice)
     setDiceArray(arr);
     calculateRollScore();
@@ -291,37 +289,45 @@ const Game = () => {
 }
 
   return (
-      <div className="dice-code">
+      <div className="game">
+
         <h3>Player: {playerToPlay()}</h3>
+        <p>Winner: {alertWinner()}</p>  
 
-        <p>Winner: {alertWinner()}</p>
-
-
-        <h1>Dice</h1>
-
-        <button className='button' onClick={onClickRollDice}>Roll Dice</button>
-        <button className='button' onClick={onClickBankScore}>Bank Score</button>
-        
         <p>Roll: {rollScore}</p>
         <p>Round: {roundScore}</p>
 
-        <>{diceList}</>
-        <hr/>
-        {/* <>Roll Score: {rollScore}</> */}
-        <br></br>
+        <div className="game-box-flex">
+          
+          <div className="all-dice">
+            {diceList}
+          </div>
+
+          <div className="roll-n-bank-buttons">
+            <button className='button' onClick={onClickRollDice}>Roll Dice</button>
+            <button className='button' onClick={onClickBankScore}>Bank Score</button>
+          </div>
+
+        </div>
         <div className="player-scores">
-          <div className="P-score">
-            <h4>Player One</h4>
-            <br></br>
-            <p>Total: {player1Total}</p>
-          </div>
-          <div className="P-score">
-            <h4>Player Two</h4>
-            <br></br>
-            <p>Total: {player2Total}</p>
-          </div>
-      </div>
-      <button className='button' onClick={onClickResetGame}>New Game</button>
+
+            <div className="P-score">
+              <h4>Player One</h4>
+              <br></br>
+              <p>Total: {player1Total}</p>
+            </div>
+
+            <div className="P-score">
+              <h4>Player Two</h4>
+              <br></br>
+              <p>Total: {player2Total}</p>
+            </div>
+
+        </div>
+        <hr></hr>
+        <div>
+          <button className='button' onClick={onClickResetGame}>New Game</button>
+        </div>
       </div>
       )
 };
