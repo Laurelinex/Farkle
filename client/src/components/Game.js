@@ -53,6 +53,7 @@ const Game = () => {
 
 
     rollDice();
+    getFarkleStatus();
     console.log('roll dice');
   };
 
@@ -185,6 +186,51 @@ const Game = () => {
      setRollScore (tempScore);
   }
 
+  // const activeDiceValue = () => {
+  //   let valueArray = [];
+  //   for (let i = 0; i < 6; i++) {
+  //     if (diceArray[i].active === 0) {
+  //       valueArray.push(diceArray[i].value)
+  //     }
+  //   }
+  // }
+
+  const findTriples = (arrayOfValues) => {
+      
+    let counts = {};
+    for (let i = 0; i < arrayOfValues.length; i++) {
+        let num = arrayOfValues[i];
+        counts[num] = counts[num] ? counts[num] + 1 : 1;
+    }
+ 
+     for (const [_, frequency] of Object.entries(counts)) {
+        if (frequency >= 3) {
+            return true;
+        }
+     }
+    return false;
+}
+
+  const getFarkleStatus = (diceArray) => {
+    let activeDiceValue = [];
+
+    for (let i = 0; i < 6; i++) {
+      if (diceArray[i].active === 0) {
+        activeDiceValue.push(diceArray[i].value)
+      }
+    }
+
+    let isFarkle = !activeDiceValue.includes(1) && !activeDiceValue.includes(5) && !findTriples(activeDiceValue);
+    if (isFarkle === true) {
+      console.log("you farkled it up");
+      return "you farkled it up";
+    } else {
+      console.log("valid score");
+      return "valid score";
+    }
+}
+
+
   return (
       <div className="dice-code">
         <h1>Dice</h1>
@@ -210,6 +256,7 @@ const Game = () => {
             <p>Round: {roundScore}</p>
             <p>Total: {player2Total}</p>
           </div>
+          <div>Farkle{getFarkleStatus}</div> 
         </div>
         
       </div>
