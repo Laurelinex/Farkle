@@ -3,10 +3,10 @@
   display: grid;
   height: 100vh;
   grid-template-areas: 
-  'header header header header header header'
-  'game game game game leaderboard leaderboard'
-  'instructions instructions instructions instructions leaderboard leaderboard'
-  'footer footer footer footer footer footer';
+  'header header header header header'
+  'game game game game leaderboard'
+  'instructions instructions instructions instructions leaderboard'
+  'footer footer footer footer footer';
   /* grid-template-areas: 
     'header'
     'game'
@@ -34,6 +34,10 @@
 }
 
 .game {
+  border: solid lightblue;
+}
+
+.game-box-flex {
   border: solid red;
   grid-area: game;
   display: flex;

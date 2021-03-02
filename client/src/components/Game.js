@@ -29,7 +29,9 @@ const Game = () => {
   }
 
   useEffect(() => {
-    setUpDiceArray()
+    setUpDiceArray();
+    playerToPlay();
+
   }, []);
 
   const setUpDiceArray = () => {
@@ -39,21 +41,42 @@ const Game = () => {
       diceArray[i].id = i;
       diceArray[i].value = i + 1;
       diceArray[i].picture = dicePicturesMap[i + 1];
-      diceArray[i].active = true;
+      diceArray[i].active = 0;
       arr.push(diceArray[i])   
     }
     setDiceArray(arr)
   }
 
+  const playerToPlay = () => {
+  	if (player1Turn === true) {
+      return "player 1 start your round by rolling the dice.";
+    } else {
+      return "player 2 start your round by rolling the dice.";
+    }
+  }
+
   const onClickRollDice = () => {
+
+    let tempRoundScore = 0;
+    tempRoundScore = roundScore + rollScore;
+    setRoundScore(tempRoundScore);
+    setRollScore(0);
+
+    for (var i = 0; i < 6; i++) {
+			if (diceArray[i].active === 1) {
+				diceArray[i].active = -1;
+			}
+		}
+
     rollDice();
     console.log('roll dice');
+
   };
 
   const rollDice = () => {
     let arr = [];
     for (let i = 0; i < 6; i++) {
-      if (diceArray[i].active === true){
+      if (diceArray[i].active === 0){
         const randInt = Math.floor((Math.random() * 6) + 1);
         diceArray[i].value = randInt;
         diceArray[i].picture = dicePicturesMap[randInt];
@@ -61,7 +84,7 @@ const Game = () => {
       // diceArray[i].active = true;
       arr.push(diceArray[i]) 
     }
-    setDiceArray(arr)
+    setDiceArray(arr);
   }
 
   const onSelectedDie = (die) => {
@@ -70,7 +93,23 @@ const Game = () => {
     console.log(arr)
     let id = die.id;
     let dice = arr[id]
-    dice.active = !dice.active
+
+    if (dice.active === 0 || dice.active === 1) {																	
+      if (dice.active === 0) {															
+        dice.active = 1;
+      } else {
+        dice.active = 0;
+      }
+    }
+
+
+    // if (dice.active === 0) {
+    //     dice.active =1;
+    //   }
+    //     else {
+    //       dice.active = 0;
+    //     }
+    //     }
     console.log("modified dice", dice)
     setDiceArray(arr);
     calculateRollScore();
@@ -95,7 +134,7 @@ const Game = () => {
     var scoreArray = [];
 
     for (var i = 0; i < 6; i++) {						
-      if (diceArray[i].active === false) {
+      if (diceArray[i].active === 1) {
         switch (diceArray[i].value) {
           case 1: ones.push(1);
                   break;
@@ -161,42 +200,100 @@ const Game = () => {
 
      tempScore = scoreArray[0] + scoreArray[1] + scoreArray[2] + scoreArray[3] + scoreArray[4] + scoreArray[5];
      setRollScore (tempScore);
+
+  }
+
+  const onClickBankScore = () => {
+    let bankTotal = 0;
+    bankTotal = roundScore + rollScore;
+    if (player1Turn === true){
+    setPlayer1Total(player1Total + bankTotal);
+    } else {
+      setPlayer2Total(player2Total + bankTotal);
+    }
+    setRollScore(0);
+    setRoundScore(0);
+    switchPlayer();
+    setUpDiceArray();
+  };
+
+  const switchPlayer = () => {
+    if (player1Turn === true){
+      setPlayer1Turn(false);
+    } else {
+      setPlayer1Turn(true);
+    }
+  };
+
+
+  const onClickResetGame = () => {
+    setUpDiceArray();
+    setPlayer1Turn(true);
+    setRollScore(0);
+    setRoundScore(0);
+    setPlayer1Total(0);
+    setPlayer2Total(0);
+  }
+
+  const alertWinner = () => {
+    if (player1Total >= 1000){
+      return ("player 1 wins")
+    } else if (player2Total >= 1000) {
+      return ("player 2 wins")
+    } else if (player1Total < 1000 && player2Total < 1000) {
+      return ("all to play for")
+    }
   }
 
   return (
       <div className="game">
-        
-        <div className="all-dice">
-          {diceList}
+
+        <h3>Player: {playerToPlay()}</h3>
+        <p>Winner: {alertWinner()}</p>  
+
+        <p>Roll: {rollScore}</p>
+        <p>Round: {roundScore}</p>
+
+        <div className="game-box-flex">
+          
+          <div className="all-dice">
+            {diceList}
+          </div>
+
+          <div className="roll-n-bank-buttons">
+            <button className='button' onClick={onClickRollDice}>Roll Dice</button>
+            <button className='button' onClick={onClickBankScore}>Bank Score</button>
+          </div>
+
         </div>
-        <div className="roll-n-bank-buttons">
-          <button className='roll-button' onClick={onClickRollDice}>Roll Dice</button>
-          <button className='bank-button'>Bank Points</button>
-
-        <hr/>
-
-        <>Roll Score: {rollScore}</>
-        <br></br>
         <div className="player-scores">
-          <div className="P-score">
-            <h4>Player One</h4>
-            <br></br>
-            <p>Roll: {rollScore}</p>
-            <p>Round: {roundScore}</p>
-            <p>Total: {player1Total}</p>
-          </div>
-          <div className="P-score">
-            <h4>Player Two</h4>
-            <br></br>
-            <p>Roll: {rollScore}</p>
-            <p>Round: {roundScore}</p>
-            <p>Total: {player2Total}</p>
-          </div>
+
+            <div className="P-score">
+              <h4>Player One</h4>
+              <br></br>
+              <p>Total: {player1Total}</p>
+            </div>
+
+            <div className="P-score">
+              <h4>Player Two</h4>
+              <br></br>
+              <p>Total: {player2Total}</p>
+            </div>
+
         </div>
+        <hr></hr>
+        <div>
+          <button className='button' onClick={onClickResetGame}>New Game</button>
         </div>
       </div>
-  );
-}
-
-
+      )
+};
 export default Game;
+
+
+
+
+
+
+
+
