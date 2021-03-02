@@ -1,11 +1,17 @@
 import React from'react';
 import { useState, useEffect } from 'react';
 import One from "../images/1.png";
-import Two from "../images/2.png";
-import Three from "../images/3.png";
-import Four from "../images/4.png";
-import Five from "../images/5.png";
-import Six from "../images/6.png";
+import { FaDiceOne } from "react-icons/fa";
+import { FaDiceTwo } from "react-icons/fa";
+import { FaDiceThree } from "react-icons/fa";
+import { FaDiceFour } from "react-icons/fa";
+import { FaDiceFive } from "react-icons/fa";
+import { FaDiceSix } from "react-icons/fa";
+// import Two from "../images/2.png";
+// import Three from "../images/3.png";
+// import Four from "../images/4.png";
+// import Five from "../images/5.png";
+// import Six from "../images/6.png";
 import "./game.css";
 import Die from "./Die";
 
@@ -19,7 +25,7 @@ const Game = () => {
   const [player1Turn, setPlayer1Turn] = useState(true);
 
   const dicePicturesMap = {
-    1: One, 2: Two, 3: Three, 4: Four, 5: Five, 6: Six
+    1: <FaDiceOne />, 2: <FaDiceTwo />, 3: <FaDiceThree />, 4: <FaDiceFour />, 5: <FaDiceFive />, 6: <FaDiceSix />
   }
 
   useEffect(() => {

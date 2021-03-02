@@ -4,7 +4,7 @@ const Die = ({die, onSelectedDie}) => {
     return (
         <div className="die">
             {/* <p>{die.value}</p> */}
-            <button onClick={() => {onSelectedDie(die)}}><img alt="die" src={die.picture} /></button>
+            <button onClick={() => {onSelectedDie(die)}}>{die.picture}</button>
         </div>
     )
 }
