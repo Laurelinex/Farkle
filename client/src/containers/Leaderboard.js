@@ -32,15 +32,24 @@ const Leaderboard = () => {
     }, [])
 
     const playerList = players.map((player, index) => {
-        return <Player player={player} key={index}/>;
+        const playerScore = player.wins / player.losses === Infinity ? player.wins : player.wins / player.losses || 0;
+        return (
+            <div key={player.playerName}>
+                <div className="player-name">{index + 1}. {player.playerName}</div>
+                {/* <div className="player-score">🏆{player.wins}</div>
+                <div className="player-score"> ☠️{player.losses} </div>
+                <div className="score-">Score ({playerScore.toFixed(2)})</div> */}
+            </div>
+        );
+        // return <Player player={player} key={index}/>;
     });
 
     return (
         <div className="leaderboard">
             <h2>Leaderboard</h2>
-            <>
+            <div className="player-list-sorted">
                 {playerList}
-            </>
+            </div>
         </div>
     )
 }
