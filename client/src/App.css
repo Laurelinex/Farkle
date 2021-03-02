@@ -90,11 +90,12 @@
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   outline:none;
   box-shadow: 20px 38px 34px -26px;
+  padding: 10px;
   
   /* overflow: auto; */
 }
 
-.instructions . ul {
+.instructions > ul {
   text-align: center;
 }
 
