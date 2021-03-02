@@ -1,7 +1,10 @@
 import Player from "../components/Player";
 import { useState, useEffect } from 'react';
 import {fetchAll} from '../services/PlayersServices';
-import './Leaderboard.css'
+import './Leaderboard.css';
+// import Popover from '@material-ui/core/Popover';
+// import Typography from '@material-ui/core/Typography';
+// import { makeStyles } from '@material-ui/core/styles';
 
 const Leaderboard = () => {
 
