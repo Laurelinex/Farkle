@@ -1,25 +1,25 @@
-import Win from "../components/Win";
+import Player from "../components/Player";
 import { useState, useEffect } from 'react';
-import GameServices from '../services/GameServices';
+import {fetchAll} from '../services/PlayersServices';
 
 const Leaderboard = () => {
 
-    const [wins, setWins] = useState([]);
+    const [players, setPlayers] = useState([]);
 
     useEffect(() => {
-        GameServices.getGames()
-        .then(games => setWins(games));
+        fetchAll()
+        .then(players => {setPlayers(players));
     }, [])
 
-    const winnerList = wins.map((win, index) => {
-        return <Win win={win} key={index}/>;
+    const playerList = players.map((player, index) => {
+        return <Player player={player} key={index}/>;
     });
 
     return (
         <div className="leaderboard">
             <h2>Leaderboard</h2>
             <>
-                {winnerList}
+                {playerList}
             </>
         </div>
     )
