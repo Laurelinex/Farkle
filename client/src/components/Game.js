@@ -63,6 +63,7 @@ const Game = () => {
 		}
 
     rollDice();
+    getFarkleStatus();
     console.log('roll dice');
 
   };
@@ -238,6 +239,56 @@ const Game = () => {
       return ("all to play for")
     }
   }
+
+  const findTriples = () => {
+      
+    let counts = {};
+    for (let i = 0; i < 6; i++) {
+        let num = diceArray[i].value;
+        counts[num] = counts[num] ? counts[num] + 1 : 1;
+    }
+ 
+     for (const [_, frequency] of Object.entries(counts)) {
+        if (frequency >= 3) {
+            return true;
+        }
+     }
+    return false;
+}
+
+  const checkOne = () => {
+    for (let i = 0; i < 6; i++) {
+      if (diceArray[i].active === 0) {
+        if (diceArray[i].value === 1){
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  const checkFive = () => {
+    for (let i = 0; i < 6; i++) {
+      if (diceArray[i].active === 0) {
+        if (diceArray[i].value === 5){
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  const getFarkleStatus = () => {
+
+    let isFarkle = !checkOne() || !checkFive() || !findTriples();
+    if (isFarkle === true) {
+      console.log("you farkled it up");
+      return "you farkled it up";
+    } else {
+      console.log("valid score");
+      return "valid score";
+    }
+}
 
   return (
       <div className="dice-code">
