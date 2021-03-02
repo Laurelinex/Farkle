@@ -251,6 +251,9 @@ const Game = () => {
         <button className='button' onClick={onClickRollDice}>Roll Dice</button>
         <button className='button' onClick={onClickBankScore}>Bank Score</button>
         
+        <p>Roll: {rollScore}</p>
+        <p>Round: {roundScore}</p>
+
         <>{diceList}</>
         <hr/>
         {/* <>Roll Score: {rollScore}</> */}
@@ -259,15 +262,11 @@ const Game = () => {
           <div className="P-score">
             <h4>Player One</h4>
             <br></br>
-            <p>Roll: {rollScore}</p>
-            <p>Round: {roundScore}</p>
             <p>Total: {player1Total}</p>
           </div>
           <div className="P-score">
             <h4>Player Two</h4>
             <br></br>
-            <p>Roll: {rollScore}</p>
-            <p>Round: {roundScore}</p>
             <p>Total: {player2Total}</p>
           </div>
       </div>
