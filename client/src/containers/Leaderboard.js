@@ -39,10 +39,11 @@ const Leaderboard = () => {
         const playerScore = player.wins / player.losses === Infinity ? player.wins : player.wins / player.losses || 0;
         return (
             <div key={player.playerName}>
-                <div className="player-name">{index + 1}. {player.playerName}</div>
-                {/* <div className="player-score">🏆{player.wins}</div>
-                <div className="player-score"> ☠️{player.losses} </div>
-                <div className="score-">Score ({playerScore.toFixed(2)})</div> */}
+                <h4 className="player-name">{index + 1}. {player.playerName}</h4>
+                <div className="player-score">{player.wins} 🏆</div>
+                <div className="player-score">{player.losses} ☠️</div>
+                <div className="score-">Score ({playerScore.toFixed(2)})</div>
+                <br></br>
             </div>
         );
         // return <Player player={player} key={index}/>;
