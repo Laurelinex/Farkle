@@ -1,3 +1,5 @@
+font-family: 'Aclonica', 'MedievalSharp', cursive, sans-serif;
+
 img {
     max-width: 30px;
 }
@@ -7,15 +9,36 @@ img {
     justify-content: center;
 }
 
-.P-score {
+.P-score, .winner {
     border: solid black;
     border-radius: 25%;
     padding: 10px;
     margin: 5px;
+    background-color: #EFE5D4;
 }
 
 .P-score > p, h4 {
     margin: 0;
+}
+
+.roll-n-bank-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    width: 100px;
+    height: 40px;
+    border: solid 5px #3E1511;
+    text-align: center;
+    margin: 5px;
+    background-color: #EFE5D4;
+    color: #3E1511;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px
 }
 
 /* button {

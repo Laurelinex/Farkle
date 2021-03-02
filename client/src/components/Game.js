@@ -50,9 +50,9 @@ const Game = () => {
 
   const playerToPlay = () => {
   	if (player1Turn === true) {
-      return "player 1 start your round by rolling the dice.";
+      return " One start your round by rolling the dice.";
     } else {
-      return "player 2 start your round by rolling the dice.";
+      return " Two start your round by rolling the dice.";
     }
   }
 
@@ -231,11 +231,11 @@ const Game = () => {
 
   const alertWinner = () => {
     if (player1Total >= 1000){
-      return ("player 1 wins")
+      return ("Player One Triumphs")
     } else if (player2Total >= 1000) {
-      return ("player 2 wins")
+      return ("Player Two Prevails")
     } else if (player1Total < 1000 && player2Total < 1000) {
-      return ("all to play for")
+      return (" still all to play for")
     }
   }
 
@@ -300,8 +300,8 @@ const Game = () => {
   return (
       <div className="game">
 
-        <h3>Player: {playerToPlay()}</h3>
-        <p>Winner: {alertWinner()}</p>  
+        <h3>Player{playerToPlay()}</h3>
+        <p className="winner">Winner: {alertWinner()}</p>  
 
         <p>Roll: {rollScore}</p>
         <p>Round: {roundScore}</p>
