@@ -26,7 +26,6 @@ const Game = () => {
   useEffect(() => {
     setUpDiceArray();
     playerToPlay();
-
   }, []);
 
   const setUpDiceArray = () => {
