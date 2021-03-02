@@ -102,14 +102,6 @@ const Game = () => {
       }
     }
 
-
-    // if (dice.active === 0) {
-    //     dice.active =1;
-    //   }
-    //     else {
-    //       dice.active = 0;
-    //     }
-    //     }
     console.log("modified dice", dice)
     setDiceArray(arr);
     calculateRollScore();
