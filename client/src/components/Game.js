@@ -8,6 +8,8 @@ import Five from "../images/5.png";
 import Six from "../images/6.png";
 import "./game.css";
 import Die from "./Die";
+import useSound from 'use-sound';
+import rollSound from '../sounds/roll.mp3';
 
 const Game = () => {
 
@@ -50,8 +52,8 @@ const Game = () => {
 				diceArray[i].active = -1;
 			}
 		}
-
-
+  
+    
     rollDice();
     console.log('roll dice');
   };
