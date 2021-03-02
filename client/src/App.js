@@ -10,11 +10,14 @@ function App() {
     <div className="App">
 
       <Header />
-     
-      <Game />
-      <Instructions />
-      <Leaderboard />
 
+      <div className="grid-container">
+        <Game />
+        <Leaderboard />
+        <Instructions />
+        
+      </div>
+      
       <Footer />
 
     </div>
