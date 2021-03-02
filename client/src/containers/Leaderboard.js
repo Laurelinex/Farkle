@@ -17,7 +17,7 @@ const Leaderboard = () => {
 
     return (
         <div className="leaderboard">
-            <h1>Leaderboard container</h1>
+            <h2>Leaderboard</h2>
             <>
                 {winnerList}
             </>

@@ -1,11 +1,14 @@
+import './Die.css'
+
 const Die = ({die, onSelectedDie}) => {
     console.log("Die component")
     
     return (
-        <>
-            <p>{die.value}</p>
-            <button onClick={() => {onSelectedDie(die)}}><img alt="die" src={die.picture} /></button>
-        </>
+        <div className="die">
+            {/* <p>{die.value}</p> */}
+            <i onClick={() => {onSelectedDie(die)}} className="Die">{die.picture}</i>
+            {/* <button onClick={() => {onSelectedDie(die)}}>{die.picture}</button> */}
+        </div>
     )
 }
 

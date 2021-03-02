@@ -1,11 +1,17 @@
 import React from'react';
 import { useState, useEffect } from 'react';
 import One from "../images/1.png";
-import Two from "../images/2.png";
-import Three from "../images/3.png";
-import Four from "../images/4.png";
-import Five from "../images/5.png";
-import Six from "../images/6.png";
+import { FaDiceOne } from "react-icons/fa";
+import { FaDiceTwo } from "react-icons/fa";
+import { FaDiceThree } from "react-icons/fa";
+import { FaDiceFour } from "react-icons/fa";
+import { FaDiceFive } from "react-icons/fa";
+import { FaDiceSix } from "react-icons/fa";
+// import Two from "../images/2.png";
+// import Three from "../images/3.png";
+// import Four from "../images/4.png";
+// import Five from "../images/5.png";
+// import Six from "../images/6.png";
 import "./game.css";
 import Die from "./Die";
 
@@ -16,14 +22,16 @@ const Game = () => {
   const [roundScore, setRoundScore] = useState(0);
   const [player1Total, setPlayer1Total] = useState(0);
   const [player2Total, setPlayer2Total] = useState(0);
-  const [player1Turn, setPlayer1Turn] = useState(0);
+  const [player1Turn, setPlayer1Turn] = useState(true);
 
   const dicePicturesMap = {
-    1: One, 2: Two, 3: Three, 4: Four, 5: Five, 6: Six
+    1: <FaDiceOne />, 2: <FaDiceTwo />, 3: <FaDiceThree />, 4: <FaDiceFour />, 5: <FaDiceFive />, 6: <FaDiceSix />
   }
 
   useEffect(() => {
-    setUpDiceArray()
+    setUpDiceArray();
+    playerToPlay();
+
   }, []);
 
   const setUpDiceArray = () => {
@@ -39,7 +47,16 @@ const Game = () => {
     setDiceArray(arr)
   }
 
+  const playerToPlay = () => {
+  	if (player1Turn === true) {
+      return "player 1 start your round by rolling the dice.";
+    } else {
+      return "player 2 start your round by rolling the dice.";
+    }
+  }
+
   const onClickRollDice = () => {
+
     let tempRoundScore = 0;
     tempRoundScore = roundScore + rollScore;
     setRoundScore(tempRoundScore);
@@ -51,10 +68,10 @@ const Game = () => {
 			}
 		}
 
-
     rollDice();
     getFarkleStatus();
     console.log('roll dice');
+
   };
 
   const rollDice = () => {
@@ -68,7 +85,7 @@ const Game = () => {
       // diceArray[i].active = true;
       arr.push(diceArray[i]) 
     }
-    setDiceArray(arr)
+    setDiceArray(arr);
   }
 
   const onSelectedDie = (die) => {
@@ -184,6 +201,49 @@ const Game = () => {
 
      tempScore = scoreArray[0] + scoreArray[1] + scoreArray[2] + scoreArray[3] + scoreArray[4] + scoreArray[5];
      setRollScore (tempScore);
+
+  }
+
+  const onClickBankScore = () => {
+    let bankTotal = 0;
+    bankTotal = roundScore + rollScore;
+    if (player1Turn === true){
+    setPlayer1Total(player1Total + bankTotal);
+    } else {
+      setPlayer2Total(player2Total + bankTotal);
+    }
+    setRollScore(0);
+    setRoundScore(0);
+    switchPlayer();
+    setUpDiceArray();
+  };
+
+  const switchPlayer = () => {
+    if (player1Turn === true){
+      setPlayer1Turn(false);
+    } else {
+      setPlayer1Turn(true);
+    }
+  };
+
+
+  const onClickResetGame = () => {
+    setUpDiceArray();
+    setPlayer1Turn(true);
+    setRollScore(0);
+    setRoundScore(0);
+    setPlayer1Total(0);
+    setPlayer2Total(0);
+  }
+
+  const alertWinner = () => {
+    if (player1Total >= 1000){
+      return ("player 1 wins")
+    } else if (player2Total >= 1000) {
+      return ("player 2 wins")
+    } else if (player1Total < 1000 && player2Total < 1000) {
+      return ("all to play for")
+    }
   }
 
   // const activeDiceValue = () => {
@@ -232,36 +292,55 @@ const Game = () => {
 
 
   return (
-      <div className="dice-code">
-        <h1>Dice</h1>
+      <div className="game">
 
-        <button className='button' onClick={onClickRollDice}>Roll Dice</button>
-        
-        <>{diceList}</>
-        <hr/>
-        {/* <>Roll Score: {rollScore}</> */}
-        <br></br>
-        <div className="player-scores">
-          <div className="P-score">
-            <h4>Player One</h4>
-            <br></br>
-            <p>Roll: {rollScore}</p>
-            <p>Round: {roundScore}</p>
-            <p>Total: {player1Total}</p>
+        <h3>Player: {playerToPlay()}</h3>
+        <p>Winner: {alertWinner()}</p>  
+
+        <p>Roll: {rollScore}</p>
+        <p>Round: {roundScore}</p>
+
+        <div className="game-box-flex">
+          
+          <div className="all-dice">
+            {diceList}
           </div>
-          <div className="P-score">
-            <h4>Player Two</h4>
-            <br></br>
-            <p>Roll: {rollScore}</p>
-            <p>Round: {roundScore}</p>
-            <p>Total: {player2Total}</p>
+
+          <div className="roll-n-bank-buttons">
+            <button className='button' onClick={onClickRollDice}>Roll Dice</button>
+            <button className='button' onClick={onClickBankScore}>Bank Score</button>
           </div>
           <div>Farkle{getFarkleStatus}</div> 
+
         </div>
-        
+        <div className="player-scores">
+
+            <div className="P-score">
+              <h4>Player One</h4>
+              <br></br>
+              <p>Total: {player1Total}</p>
+            </div>
+
+            <div className="P-score">
+              <h4>Player Two</h4>
+              <br></br>
+              <p>Total: {player2Total}</p>
+            </div>
+
+        </div>
+        <hr></hr>
+        <div>
+          <button className='button' onClick={onClickResetGame}>New Game</button>
+        </div>
       </div>
-  );
-}
-
-
+      )
+};
 export default Game;
+
+
+
+
+
+
+
+
