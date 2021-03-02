@@ -31,8 +31,7 @@ const Game = () => {
 
   useEffect(() => {
     setUpDiceArray();
-    playerToPlay();
-
+    playerToPlay();    
   }, []);
 
   const setUpDiceArray = () => {
@@ -291,6 +290,9 @@ const Game = () => {
     if (isFarkle === true) {
       console.log("you farkled it up");
       setMessage("you farkled it up");
+      console.log("switching to player2")
+      switchPlayer();
+      setUpDiceArray()
     } else {
       console.log("valid score");
       setMessage ("choose dice to score");
