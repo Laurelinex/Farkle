@@ -1,3 +1,5 @@
+import './Player.css'
+
 const Player = ({player}) => {
     console.log("player component")
 

@@ -1,6 +1,7 @@
 import Player from "../components/Player";
 import { useState, useEffect } from 'react';
 import {fetchAll} from '../services/PlayersServices';
+import './Leaderboard.css'
 
 const Leaderboard = () => {
 
