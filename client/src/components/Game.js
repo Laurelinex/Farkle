@@ -63,8 +63,16 @@ const Game = () => {
 			}
 		}
 
-    rollDice();
-    getFarkleStatus();
+    let hotDice = checkActiveDice();
+      if (hotDice = true){
+        rollDice();
+        getFarkleStatus();
+      } else {
+        setUpDiceArray();
+        rollDice();
+      }
+
+
     console.log('roll dice');
 
   };
@@ -106,6 +114,15 @@ const Game = () => {
   const diceList = diceArray.map((die, index) => {
     return  <Die die={die} onSelectedDie={onSelectedDie} key={index} />
   });
+
+  const checkActiveDice = () => {
+    for (let i = 0; i < 6; i++) {
+      if (diceArray[i].active === 0) {
+          return true;
+      }
+    }
+    return false;
+  }
 
 
 
