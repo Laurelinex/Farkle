@@ -23,6 +23,7 @@ const Game = () => {
   const [player1Total, setPlayer1Total] = useState(0);
   const [player2Total, setPlayer2Total] = useState(0);
   const [player1Turn, setPlayer1Turn] = useState(true);
+  const [message, setMessage] = useState("hello");
 
   const dicePicturesMap = {
     1: <FaDiceOne />, 2: <FaDiceTwo />, 3: <FaDiceThree />, 4: <FaDiceFour />, 5: <FaDiceFive />, 6: <FaDiceSix />
@@ -242,15 +243,19 @@ const Game = () => {
       
     let counts = {};
     for (let i = 0; i < 6; i++) {
+      if (diceArray[i].active === 0){
         let num = diceArray[i].value;
         counts[num] = counts[num] ? counts[num] + 1 : 1;
     }
+  }
  
      for (const [_, frequency] of Object.entries(counts)) {
         if (frequency >= 3) {
+            console.log("triples", true)
             return true;
         }
      }
+     console.log("triples", false)
     return false;
 }
 
@@ -258,10 +263,12 @@ const Game = () => {
     for (let i = 0; i < 6; i++) {
       if (diceArray[i].active === 0) {
         if (diceArray[i].value === 1){
+          console.log("checkOne", true)
           return true;
         }
       }
     }
+    console.log("checkOne", false)
     return false;
   }
 
@@ -269,22 +276,24 @@ const Game = () => {
     for (let i = 0; i < 6; i++) {
       if (diceArray[i].active === 0) {
         if (diceArray[i].value === 5){
+          console.log("checkFive", true)
           return true;
         }
       }
     }
+    console.log("checkFive", false)
     return false;
   }
 
   const getFarkleStatus = () => {
 
-    let isFarkle = !checkOne() || !checkFive() || !findTriples();
+    let isFarkle = !findTriples() && !checkOne() && !checkFive();
     if (isFarkle === true) {
       console.log("you farkled it up");
-      return "you farkled it up";
+      setMessage("you farkled it up");
     } else {
       console.log("valid score");
-      return "valid score";
+      setMessage ("choose dice to score");
     }
 }
 
@@ -296,6 +305,8 @@ const Game = () => {
 
         <p>Roll: {rollScore}</p>
         <p>Round: {roundScore}</p>
+
+        <p>{message}</p>
 
         <div className="game-box-flex">
           
