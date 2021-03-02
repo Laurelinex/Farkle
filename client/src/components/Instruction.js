@@ -35,17 +35,17 @@ const Instructions = () => {
             <h3>Scoring</h3>
 
             <ul>
-            <li>1x Five: 50 each</li>
-            <li>1x One: 100 each</li>
-            <li>3x Ones: 1000</li>
-            <li>3x Twos: 200</li>
-            <li>3x Threes: 300</li>
-            <li>3x Fours: 400</li>
-            <li>3x Fives: 500</li>
-            <li>3x Sixes: 600</li>
-            <li>Four of a Kind: multiply by 2</li>
-            <li>Five of a Kind: multiply by 3</li>
-            <li>Six of a Kind: multiply by 4</li>
+                <li>1x Five: 50 each</li>
+                <li>1x One: 100 each</li>
+                <li>3x Ones: 1000</li>
+                <li>3x Twos: 200</li>
+                <li>3x Threes: 300</li>
+                <li>3x Fours: 400</li>
+                <li>3x Fives: 500</li>
+                <li>3x Sixes: 600</li>
+                <li>Four of a Kind: multiply by 2</li>
+                <li>Five of a Kind: multiply by 3</li>
+                <li>Six of a Kind: multiply by 4</li>
             </ul>
 
             <h3>Winning</h3>

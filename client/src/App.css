@@ -1,38 +1,53 @@
+
 .App {
   text-align: center;
-  /* display: grid;
-  height: 100vh;
-  grid-template-areas: 
-  'header header header header header'
-  'game game game game leaderboard'
-  'instructions instructions instructions instructions leaderboard'
-  'footer footer footer footer footer'; */
-  /* grid-template-areas: 
-    'header'
-    'game'
-    'leaderboard'
-    'instructions'
-    'footer';
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto auto; */
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/401156/another-rough-old-and-worn-parchment-paper.jpg");
+  background-size: cover;
+  /* background-blend-mode: ; */
+  background-color: #3E1511;
+  padding: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+* {
+  /* background-color: #3E1511; */
+  color:#3E1511;
+}
+
+.colour-palette {
+  color: #3E1511;
+  color: #6A2B21;
+  color: #9C4B36;
+  color: #B49881;
+  color: #EFE5D4;
+  color: #e6d2b1; 
+
 }
 
 .grid-container {
   display: grid;
+  gap: 1%;
   grid-template-areas: 
   'game leaderboard'
-  'instructions leaderboard'
+  'instructions leaderboard';
 }
 
 /* Structure outlines */
 
 .header {
-  border: solid hotpink;
   grid-area: header;
+  border: solid 5px #3E1511;
+  background-color: #e6d2b1;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  outline:none;
+  box-shadow: 20px 38px 34px -26px;
+  margin: 8px;
 }
 
 .title-logo {
-  border: solid yellow;
+  margin: 10px;
+  border: yellow solid 5px;
 }
 
 .footer {
@@ -46,38 +61,60 @@
 }
 
 .game-box-flex {
-  border: solid red;
   grid-area: game;
   display: flex;
   justify-content: space-around;
   padding: 5%;
+  border: solid 5px #3E1511;
+  background-color: #e6d2b1;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  outline:none;
+  box-shadow: 20px 38px 34px -26px;
 }
 
 .all-dice {
-  border: solid blue;
+  border: #e6d2b1;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #e6d2b1;
 }
 
-/* .roll-n-bank-buttons {
-  display: flex;
-} */
 
 .die > button {
   display: contents;
 }
 
 .instructions {
-  border: solid green;
   grid-area: instructions;
+  border: solid 5px #3E1511;
+  background-color: #e6d2b1;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  outline:none;
+  box-shadow: 20px 38px 34px -26px;
+  padding: 10px;
+  
   /* overflow: auto; */
+}
+
+.instructions > ul {
+  text-align: center;
+}
+
+.instructions > ul > li{
+  list-style: none;
+
 }
 
 .leaderboard {
   border: solid orange;
   grid-area: leaderboard;
   min-width: 200px;
+  border: solid 5px #3E1511;
+  background-color: #e6d2b1;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  outline:none;
+  box-shadow: 20px 38px 34px -26px;
 }
 
 .win-item {
