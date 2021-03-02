@@ -17,7 +17,8 @@ const Game = () => {
   const [player1Total, setPlayer1Total] = useState(0);
   const [player2Total, setPlayer2Total] = useState(0);
   const [player1Turn, setPlayer1Turn] = useState(true);
-  const [message, setMessage] = useState("Roll them dice.");
+  const [message, setMessage] = useState("");
+  const [farkleAlert, setFarkleAlert] = useState("");
 
   const dicePicturesMap = {
     1: <FaDiceOne />, 2: <FaDiceTwo />, 3: <FaDiceThree />, 4: <FaDiceFour />, 5: <FaDiceFive />, 6: <FaDiceSix />
@@ -45,9 +46,9 @@ const Game = () => {
   // To change for a set message state
   const playerToPlay = () => {
   	if (player1Turn === true) {
-      return " One start your round by rolling the dice.";
+      setMessage("Player One start your round by rolling the dice.");
     } else {
-      return " Two start your round by rolling the dice.";
+      setMessage("Player Two start your round by rolling the dice.");
     }
   }
 
@@ -203,6 +204,8 @@ const Game = () => {
     setRollScore(0);
     setRoundScore(0);
     switchPlayer();
+    playerToPlay();
+    alertWinner();
     setUpDiceArray();
   };
 
@@ -227,12 +230,13 @@ const Game = () => {
   // To change for a set message state
   const alertWinner = () => {
     if (player1Total >= 1000){
-      return ("Player One Triumphs")
+      setMessage("Player One Triumphs")
     } else if (player2Total >= 1000) {
-      return ("Player Two Prevails")
-    } else if (player1Total < 1000 && player2Total < 1000) {
-      return (" still all to play for")
-    }
+      setMessage("Player Two Prevails")
+    } 
+    // else if (player1Total < 1000 && player2Total < 1000) {
+    //   setMessage(" still all to play for")
+    // }
   }
 
   const findTriples = () => {
@@ -287,23 +291,31 @@ const Game = () => {
     let isFarkle = !findTriples() && !checkOne() && !checkFive();
     if (isFarkle === true) {
       console.log("you farkled it up");
-      setMessage("you farkled it up");
-    } else {
-      console.log("valid score");
-      setMessage ("choose dice to score");
-    }
+      setFarkleAlert("You farkled it up... on to the next player!");
+      if (player1Turn === true){
+        setPlayer1Turn(false);
+      } else {
+        setPlayer1Turn(true);
+      }
+    } 
+    // else {
+    //   console.log("valid score");
+    //   setMessage ("Choose dice to score.");
+    // }
 }
 
   return (
       <div className="game">
 
-        <h3>Player{playerToPlay()}</h3>
-        <p className="winner">Winner: {alertWinner()}</p>  
+        {/* <h3>Player{playerToPlay()}</h3> */}
+        <h3>{message}</h3>
+        <h3>{farkleAlert}</h3>
+        {/* <p className="winner">Winner: {alertWinner()}</p>   */}
 
         <p>Roll: {rollScore}</p>
         <p>Round: {roundScore}</p>
 
-        <p>{message}</p>
+        {/* <p>{message}</p> */}
 
         <div className="game-box-flex">
           
