@@ -43,11 +43,6 @@ db.players.insertMany([
         losses: 5 
     },
     {
-        playerName: 'Mojo Jojo',
-        wins: 0,
-        losses: 67 
-    },
-    {
         playerName: 'unfinished_sentenc',
         wins: 12,
         losses: 8 
