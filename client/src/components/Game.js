@@ -13,7 +13,7 @@ import PlayerTwoSelector from './PlayerTwoSelector';
 import PlayerOne from './PlayerOne';
 import PlayerTwo from './PlayerTwo';
 import PlayerForm from './PlayerForm';
-import {fetchAll} from '../services/PlayersServices';
+import {fetchAll, increaseWinOrLosses} from '../services/PlayersServices';
 
 const Game = () => {
 
@@ -38,10 +38,14 @@ const Game = () => {
   useEffect(() => {
     setUpDiceArray();
     playerToPlay();
-    alertWinner();
+    // alertWinner();
     fetchAll()
       .then(data => setPlayers(data));
   }, []);
+
+  useEffect(() => {
+    alertWinner();
+  }, [player1Total, player2Total])
 
   const handleSelectedPlayerOne = (selectedPlayerOne) => {
     setSelectedPlayerOne(selectedPlayerOne)
@@ -251,10 +255,19 @@ const Game = () => {
 
   // To change for a set message state
   const alertWinner = () => {
+    // const player = 
     if (player1Total >= 1000){
       setWinnerMessage("Player One Triumphs")
+      selectedPlayerOne.wins += 1;
+      increaseWinOrLosses(selectedPlayerOne.playerName, 'wins', selectedPlayerOne.wins);
+      selectedPlayerTwo.losses += 1;
+      increaseWinOrLosses(selectedPlayerTwo.playerName, 'losses', selectedPlayerTwo.losses);
     } else if (player2Total >= 1000) {
       setWinnerMessage("Player Two Prevails")
+      selectedPlayerTwo.wins += 1;
+      increaseWinOrLosses(selectedPlayerTwo.playerName, 'wins', selectedPlayerTwo.wins);
+      selectedPlayerOne.losses += 1;
+      increaseWinOrLosses(selectedPlayerOne.playerName, 'losses', selectedPlayerOne.losses);
     } else if (player1Total < 1000 && player2Total < 1000) {
       setWinnerMessage("...")
     }
