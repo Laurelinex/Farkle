@@ -1,8 +1,17 @@
+.player-selectors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
 .all-dice {
     display: flex;
     flex-wrap: wrap;
     width: 400px;
     height: 200px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .player-scores {
@@ -43,6 +52,14 @@
     font-family: 'Aclonica';
 }
 
+.roll-round-score {
+    border: solid black;
+    border-radius: 25%;
+    padding: 5px;
+    margin: 5px;
+    background-color: #EFE5D4; 
+}
+
 /* button {
     display: inline-block;
     height: 134px;
@@ -50,10 +67,7 @@
     margin: 0;
     vertical-align: top;
     width: 104px;
-}
-
-#dice-image img {
-    display: block;
-    height: 30px;  
-    width: 30px;
 } */
+
+
+

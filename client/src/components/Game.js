@@ -1,4 +1,5 @@
 import React from'react';
+import "./Game.css";
 import { useState, useEffect } from 'react';
 import { FaDiceOne } from "react-icons/fa";
 import { FaDiceTwo } from "react-icons/fa";
@@ -6,12 +7,11 @@ import { FaDiceThree } from "react-icons/fa";
 import { FaDiceFour } from "react-icons/fa";
 import { FaDiceFive } from "react-icons/fa";
 import { FaDiceSix } from "react-icons/fa";
-import "./Game.css";
 import Die from "./Die";
 import PlayerOneSelector from './PlayerOneSelector';
 import PlayerTwoSelector from './PlayerTwoSelector';
-import PlayerOne from './PlayerOne';
-import PlayerTwo from './PlayerTwo';
+// import PlayerOne from './PlayerOne';
+// import PlayerTwo from './PlayerTwo';
 import PlayerForm from './PlayerForm';
 import {fetchAll, increaseWinOrLosses} from '../services/PlayersServices';
 
@@ -388,37 +388,43 @@ const Game = () => {
 
   return (
       <div className="game">
+
         <div className="player-selectors">
           <div>Player One</div>
           <PlayerOneSelector players={players} onPlayerSelected={handleSelectedPlayerOne} />
           <div>Player Two</div>
           <PlayerTwoSelector players={players} onPlayerSelected={handleSelectedPlayerTwo} />
+          <PlayerForm />  
         </div>
-        
-        <PlayerForm />    
-
-        <h3>Player{playerToPlay()}</h3>
-        {/* <p className="winner">Winner: {alertWinner()}</p>   */}
-        <p className="winner">Winner: {winnerMessage}</p>
-
-        <p>Roll: {rollScore}</p>
-        <p>Round: {roundScore}</p>
-
-        <p>{message}</p>
 
         <div className="game-box-flex">
           
+        <h3 className="game-box-top">Player{playerToPlay()}</h3>
+
+        <div className="game-box-middle">
+
           <div className="all-dice">
             {diceList}
+            <p>{message}</p>
           </div>
 
-          <div className="roll-n-bank-buttons">
-            <button className='button' onClick={onClickRollDice}>Roll Dice</button>
-            <button className='button' onClick={onClickBankScore}>Bank Score</button>
+          <div>
+
+            <div className="roll-n-bank-buttons">
+              <button className='button' onClick={onClickRollDice}>Roll Dice</button>
+              <button className='button' onClick={onClickBankScore}>Bank Score</button>
+            </div>
           </div>
+        </div>
 
         </div>
         <div className="player-scores">
+
+            <div className="P-score">
+              <p>Roll Score: {rollScore}</p>
+              <br></br>
+              <p>Round Score: {roundScore}</p>
+            </div>
 
             <div className="P-score">
               <div>{playerOneName}</div>
@@ -436,7 +442,9 @@ const Game = () => {
             </div>
 
         </div>
-        <hr></hr>
+
+          {/* <p className="winner">Winner: {alertWinner()}</p>   */}
+          <p className="winner">Winner: {winnerMessage}</p>
         <div>
           <button className='button' onClick={onClickResetGame}>New Game</button>
         </div>

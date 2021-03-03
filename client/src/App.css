@@ -56,13 +56,14 @@
 }
 
 .game {
-  border: solid lightblue;
+  /* border: solid lightblue; */
   width: 100%;
 }
 
 .game-box-flex {
   grid-area: game;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   padding: 5%;
   border: solid 5px #3E1511;
@@ -70,6 +71,11 @@
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   outline:none;
   box-shadow: 20px 38px 34px -26px;
+}
+
+.game-box-middle {
+  display: flex;
+  flex-direction: row;
 }
 
 .all-dice {
