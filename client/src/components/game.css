@@ -35,6 +35,10 @@
     background-color: #EFE5D4;
 }
 
+div.P-score {
+    min-width: 150px;
+}
+
 p.winner {
     margin-left: 25%;
     margin-right: 25%;
