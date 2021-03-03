@@ -1,0 +1,21 @@
+.header {
+    grid-area: header;
+    border: solid 5px #3E1511;
+    background-color: #e6d2b1;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header img {
+    width: 40%;
+}
+
+.intro {
+    padding: 1%;
+    /* text-align: left; */
+}

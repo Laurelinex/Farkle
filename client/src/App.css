@@ -35,7 +35,7 @@
 
 /* Structure outlines */
 
-.header {
+/* .header {
   grid-area: header;
   border: solid 5px #3E1511;
   background-color: #e6d2b1;
@@ -43,7 +43,7 @@
   outline:none;
   box-shadow: 20px 38px 34px -26px;
   margin: 8px;
-}
+} */
 
 /* .title-logo {
   margin: 10px;
