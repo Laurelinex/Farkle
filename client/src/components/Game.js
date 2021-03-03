@@ -44,7 +44,12 @@ const Game = () => {
   const handleSelectedPlayerOne = (selectedPlayerOne) => {
     setSelectedPlayerOne(selectedPlayerOne)
     setPlayerOneName(selectedPlayerOne.playerName)
-    console.log("name", selectedPlayerOne.playerName);
+    // console.log("name", selectedPlayerOne.playerName);
+  }
+
+  const handleSelectedPlayerTwo = (selectedPlayerTwo) => {
+    setSelectedPlayerTwo(selectedPlayerTwo)
+    setPlayerTwoName(selectedPlayerTwo.playerName)
   }
 
   const setUpDiceArray = () => {
@@ -317,10 +322,13 @@ const Game = () => {
 
   return (
       <div className="game">
-
-        <div>Player One</div>
-        <PlayerOneSelector players={players} onPlayerSelected={handleSelectedPlayerOne} />
-
+        <div className="player-selectors">
+          <div>Player One</div>
+          <PlayerOneSelector players={players} onPlayerSelected={handleSelectedPlayerOne} />
+          <div>Player Two</div>
+          <PlayerTwoSelector players={players} onPlayerSelected={handleSelectedPlayerTwo} />
+        </div>
+        
         <PlayerForm />    
 
         <h3>Player{playerToPlay()}</h3>
