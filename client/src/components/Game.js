@@ -1,5 +1,4 @@
 import React from'react';
-import "./Game.css";
 import { useState, useEffect } from 'react';
 import { FaDiceOne } from "react-icons/fa";
 import { FaDiceTwo } from "react-icons/fa";
@@ -14,6 +13,7 @@ import PlayerTwoSelector from './PlayerTwoSelector';
 // import PlayerTwo from './PlayerTwo';
 import PlayerForm from './PlayerForm';
 import {fetchAll, increaseWinOrLosses} from '../services/PlayersServices';
+import "./Game.css";
 
 const Game = () => {
 
