@@ -2,16 +2,18 @@ import React from 'react';
 
 const PlayerOneSelector = ({players, onPlayerSelected}) => {
 
-    const options = players.map((player, index) => {
+    const options = players.map((playerOne, index) => {
         return(
-            <option value={player.PlayerName} key={index}>{player.playerName}</option>
+            <option value={playerOne.playerName} key={index}>{playerOne.playerName}</option>
         )
     })
 
     const handleChange = (event) => {
-        const foundPlayer = players.find((player, index) => {
-            return player.index === event.target.value
+        const foundPlayer = players.find((playerOne) => {
+            return playerOne.playerName === event.target.value
         })
+        // console.log("value", event.target.value);
+        // console.log("found", foundPlayer.playerName);
         onPlayerSelected(foundPlayer)
     }
 

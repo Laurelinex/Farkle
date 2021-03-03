@@ -8,9 +8,18 @@ import { FaDiceFive } from "react-icons/fa";
 import { FaDiceSix } from "react-icons/fa";
 import "./Game.css";
 import Die from "./Die";
+import PlayerOneSelector from './PlayerOneSelector';
+import PlayerTwoSelector from './PlayerTwoSelector';
+import PlayerOne from './PlayerOne';
+import PlayerTwo from './PlayerTwo';
+import PlayerForm from './PlayerForm';
+import {fetchAll} from '../services/PlayersServices';
 
 const Game = () => {
 
+  const [players, setPlayers] = useState([]);
+  const [selectedPlayerOne, setSelectedPlayerOne] = useState({}); 
+  const [selectedPlayerTwo, setSelectedPlayerTwo] = useState({}); 
   const [diceArray, setDiceArray] = useState([]);
   const [rollScore, setRollScore] = useState(0);
   const [roundScore, setRoundScore] = useState(0);
@@ -18,6 +27,8 @@ const Game = () => {
   const [player2Total, setPlayer2Total] = useState(0);
   const [player1Turn, setPlayer1Turn] = useState(true);
   const [message, setMessage] = useState("Roll them dice.");
+  const [playerOneName, setPlayerOneName] = useState("Player One")
+  const [playerTwoName, setPlayerTwoName] = useState("Player Two")
 
   const dicePicturesMap = {
     1: <FaDiceOne />, 2: <FaDiceTwo />, 3: <FaDiceThree />, 4: <FaDiceFour />, 5: <FaDiceFive />, 6: <FaDiceSix />
@@ -26,7 +37,15 @@ const Game = () => {
   useEffect(() => {
     setUpDiceArray();
     playerToPlay();
+    fetchAll()
+      .then(data => setPlayers(data));
   }, []);
+
+  const handleSelectedPlayerOne = (selectedPlayerOne) => {
+    setSelectedPlayerOne(selectedPlayerOne)
+    setPlayerOneName(selectedPlayerOne.playerName)
+    console.log("name", selectedPlayerOne.playerName);
+  }
 
   const setUpDiceArray = () => {
     let arr = [];
@@ -299,6 +318,11 @@ const Game = () => {
   return (
       <div className="game">
 
+        <div>Player One</div>
+        <PlayerOneSelector players={players} onPlayerSelected={handleSelectedPlayerOne} />
+
+        <PlayerForm />    
+
         <h3>Player{playerToPlay()}</h3>
         <p className="winner">Winner: {alertWinner()}</p>  
 
@@ -322,13 +346,16 @@ const Game = () => {
         <div className="player-scores">
 
             <div className="P-score">
-              <h4>Player One</h4>
+              <div>{playerOneName}</div>
+              {/* <PlayerOne playerOne={selectedPlayerOne}/> */}
+              {/* <h4>{playerOneName}</h4> */}
               <br></br>
               <p>Total: {player1Total}</p>
             </div>
 
             <div className="P-score">
-              <h4>Player Two</h4>
+            <div>{playerTwoName}</div>
+            {/* <PlayerTwo playerTwo={selectedPlayerTwo}/> */}
               <br></br>
               <p>Total: {player2Total}</p>
             </div>

@@ -1,4 +1,4 @@
-import Player from "../components/Player";
+// import Player from "../components/PlayerOne";
 import { useState, useEffect } from 'react';
 import {fetchAll} from '../services/PlayersServices';
 import './Leaderboard.css';
