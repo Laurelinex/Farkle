@@ -11,9 +11,9 @@ app.use(cors());
 MongoClient.connect("mongodb://localhost:27017")
     .then((client) => {
         const db = client.db("farkle");
-        const gamesCollection = db.collection("games");
-        const gamesRouter = createRouter(gamesCollection);
-        app.use("/api/games", gamesRouter);
+        const playersCollection = db.collection("players");
+        const playersRouter = createRouter(playersCollection);
+        app.use("/api/players", playersRouter);
     })
     .catch(console.err);
 

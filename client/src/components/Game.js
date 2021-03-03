@@ -6,7 +6,7 @@ import { FaDiceThree } from "react-icons/fa";
 import { FaDiceFour } from "react-icons/fa";
 import { FaDiceFive } from "react-icons/fa";
 import { FaDiceSix } from "react-icons/fa";
-import "./game.css";
+import "./Game.css";
 import Die from "./Die";
 
 const Game = () => {
@@ -25,7 +25,7 @@ const Game = () => {
 
   useEffect(() => {
     setUpDiceArray();
-    playerToPlay();    
+    playerToPlay();
   }, []);
 
   const setUpDiceArray = () => {
