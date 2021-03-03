@@ -32,22 +32,39 @@ export const fetchAll = () => {
     return fetch(baseURL).then(res => res.json());
 };
 
-export const increaseWinOrLosses = (playerName, type, updatedScore) => {
+export const increaseWinOrLosses = (player) => {
     /* 
         This function updates the back-end user object
         so as to either increase the wins or the losses
         of the user.
     */
-    return fetch(baseURL + playerName, { 
-        method: 'PATCH',
-        body: JSON.stringify({ [type]:  updatedScore}),
+    return fetch(baseURL + player._id, { 
+        method: 'PUT',
+        body: JSON.stringify(player),
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
         }
     })
     .then(res => res.json()) // returning the result of the first promise (just the request) 
     .catch(console.error);
 };
+
+// export const increaseWinOrLosses = (playerName, type, updatedScore) => {
+//     /* 
+//         This function updates the back-end user object
+//         so as to either increase the wins or the losses
+//         of the user.
+//     */
+//     return fetch(baseURL + playerName, { 
+//         method: 'PATCH',
+//         body: JSON.stringify({ [type]:  updatedScore}),
+//         headers: {
+//             "Content-Type": "application/json"
+//         }
+//     })
+//     .then(res => res.json()) // returning the result of the first promise (just the request) 
+//     .catch(console.error);
+// };
 
 // const baseURL = "http://localhost:5000/api/players/";
 

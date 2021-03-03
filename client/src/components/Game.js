@@ -58,6 +58,15 @@ const Game = () => {
     setPlayerTwoName(selectedPlayerTwo.playerName)
   }
 
+  // const updatePlayerScore = updatedPlayerScore => {
+  //   increaseWinOrLosses(updatedPlayerScore);
+
+  //   const updatedPlayerScoreIndex = players.findIndex(player => player._id === updatedPlayer._id);
+  //   const updatedPlayers = [...players];
+  //   updatedPlayers[updatedPlayerScoreIndex] = updatedPlayer;
+  //   setPlayers(updatedPlayers);
+  // }
+
   const setUpDiceArray = () => {
     let arr = [];
     for (let i = 0; i < 6; i++) {
@@ -281,22 +290,37 @@ const Game = () => {
 
   // To change for a set message state
   const alertWinner = () => {
-    // const player = 
     if (player1Total >= 1000){
-      setWinnerMessage("Player One Triumphs")
+      setWinnerMessage(`${playerOneName} Triumphs`)
       selectedPlayerOne.wins += 1;
-      increaseWinOrLosses(selectedPlayerOne.playerName, 'wins', selectedPlayerOne.wins);
+      increaseWinOrLosses(selectedPlayerOne);
       selectedPlayerTwo.losses += 1;
-      increaseWinOrLosses(selectedPlayerTwo.playerName, 'losses', selectedPlayerTwo.losses);
+      increaseWinOrLosses(selectedPlayerTwo);
     } else if (player2Total >= 1000) {
-      setWinnerMessage("Player Two Prevails")
+      setWinnerMessage(`${playerTwoName} Prevails`)
       selectedPlayerTwo.wins += 1;
-      increaseWinOrLosses(selectedPlayerTwo.playerName, 'wins', selectedPlayerTwo.wins);
+      increaseWinOrLosses(selectedPlayerTwo);
       selectedPlayerOne.losses += 1;
-      increaseWinOrLosses(selectedPlayerOne.playerName, 'losses', selectedPlayerOne.losses);
+      increaseWinOrLosses(selectedPlayerOne);
     } else if (player1Total < 1000 && player2Total < 1000) {
       setWinnerMessage("...")
     }
+    
+    // if (player1Total >= 1000){
+    //   setWinnerMessage("Player One Triumphs")
+    //   selectedPlayerOne.wins += 1;
+    //   increaseWinOrLosses(selectedPlayerOne.playerName, 'wins', selectedPlayerOne.wins);
+    //   selectedPlayerTwo.losses += 1;
+    //   increaseWinOrLosses(selectedPlayerTwo.playerName, 'losses', selectedPlayerTwo.losses);
+    // } else if (player2Total >= 1000) {
+    //   setWinnerMessage("Player Two Prevails")
+    //   selectedPlayerTwo.wins += 1;
+    //   increaseWinOrLosses(selectedPlayerTwo.playerName, 'wins', selectedPlayerTwo.wins);
+    //   selectedPlayerOne.losses += 1;
+    //   increaseWinOrLosses(selectedPlayerOne.playerName, 'losses', selectedPlayerOne.losses);
+    // } else if (player1Total < 1000 && player2Total < 1000) {
+    //   setWinnerMessage("...")
+    // }
   }
 
   const findTriples = () => {

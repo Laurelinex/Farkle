@@ -72,6 +72,18 @@ const createRouter = function(collection) {
         });
     });
 
+    // UPDATE: for incrementing user score
+    router.patch('/:name', (req, res) => {
+        const playerrName = req.params.name;
+        const updatedPlayerObj = req.body;
+        collection.updateOne({ playerName: playerName }, { $set: updatedPlayerObj })
+            .then(result => {
+                res.json(result);
+            })
+            .catch(console.error);
+    });
+
+
     return router;
 };
 
