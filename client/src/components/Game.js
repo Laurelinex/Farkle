@@ -375,14 +375,14 @@ const Game = () => {
     let isFarkle = !findTriples() && !checkOne() && !checkFive();
     if (isFarkle === true) {
       console.log("you farkled it up");
-      setMessage("you farkled it up");
+      setMessage("you farkled it up!");
       console.log("switching to player2")
       setRoundScore(0);
       switchPlayer();
       setUpDiceArray()
     } else {
       console.log("valid score");
-      setMessage ("choose dice to score");
+      setMessage ("Choose dice to score.");
     }
 }
 
