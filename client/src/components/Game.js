@@ -27,8 +27,9 @@ const Game = () => {
   const [player2Total, setPlayer2Total] = useState(0);
   const [player1Turn, setPlayer1Turn] = useState(true);
   const [message, setMessage] = useState("Roll them dice.");
-  const [playerOneName, setPlayerOneName] = useState("Player One")
-  const [playerTwoName, setPlayerTwoName] = useState("Player Two")
+  const [playerOneName, setPlayerOneName] = useState("Player One");
+  const [playerTwoName, setPlayerTwoName] = useState("Player Two");
+  const [winnerMessage, setWinnerMessage] = useState("")
 
   const dicePicturesMap = {
     1: <FaDiceOne />, 2: <FaDiceTwo />, 3: <FaDiceThree />, 4: <FaDiceFour />, 5: <FaDiceFive />, 6: <FaDiceSix />
@@ -37,6 +38,7 @@ const Game = () => {
   useEffect(() => {
     setUpDiceArray();
     playerToPlay();
+    alertWinner();
     fetchAll()
       .then(data => setPlayers(data));
   }, []);
@@ -250,11 +252,11 @@ const Game = () => {
   // To change for a set message state
   const alertWinner = () => {
     if (player1Total >= 1000){
-      return ("Player One Triumphs")
+      setWinnerMessage("Player One Triumphs")
     } else if (player2Total >= 1000) {
-      return ("Player Two Prevails")
+      setWinnerMessage("Player Two Prevails")
     } else if (player1Total < 1000 && player2Total < 1000) {
-      return (" still all to play for")
+      setWinnerMessage("...")
     }
   }
 
@@ -332,7 +334,8 @@ const Game = () => {
         <PlayerForm />    
 
         <h3>Player{playerToPlay()}</h3>
-        <p className="winner">Winner: {alertWinner()}</p>  
+        {/* <p className="winner">Winner: {alertWinner()}</p>   */}
+        <p className="winner">Winner: {winnerMessage}</p>
 
         <p>Roll: {rollScore}</p>
         <p>Round: {roundScore}</p>
