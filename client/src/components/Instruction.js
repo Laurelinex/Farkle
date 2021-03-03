@@ -32,7 +32,7 @@ const Instructions = () => {
                 all points for this round shall be lost. And rightly so. Tread carefully. 
             </p>
 
-            <h3>Scoring</h3>
+            {/* <h3>Scoring</h3>
 
             <ul>
                 <li>1x Five: 50 each</li>
@@ -46,7 +46,7 @@ const Instructions = () => {
                 <li>Four of a Kind: multiply by 2</li>
                 <li>Five of a Kind: multiply by 3</li>
                 <li>Six of a Kind: multiply by 4</li>
-            </ul>
+            </ul> */}
 
             <h3>Winning</h3>
 

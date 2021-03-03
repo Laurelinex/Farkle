@@ -399,14 +399,30 @@ const Game = () => {
 
         <div className="game-box-flex">
           
-        <h3 className="game-box-top">Player{playerToPlay()}</h3>
+            <h3 className="game-box-top">Player{playerToPlay()}</h3>
 
-        <div className="game-box-middle">
+          <div className="game-box-middle">
 
-          <div className="all-dice">
-            {diceList}
-            <p>{message}</p>
-          </div>
+            <div className="scoring">
+              <h3>Scoring</h3>
+                  <ul>
+                      <li>1x Five: 50 each</li>
+                      <li>1x One: 100 each</li>
+                      <li>3x Ones: 1000</li>
+                      <li>3x Twos: 200</li>
+                      <li>3x Threes: 300</li>
+                      <li>3x Fours: 400</li>
+                      <li>3x Fives: 500</li>
+                      <li>3x Sixes: 600</li>
+                      <li>Four of a Kind: multiply by 2</li>
+                      <li>Five of a Kind: multiply by 3</li>
+                      <li>Six of a Kind: multiply by 4</li>
+                  </ul>
+            </div>
+
+            <div className="all-dice">
+            {diceList} 
+            </div>
 
           <div>
 
@@ -416,8 +432,12 @@ const Game = () => {
             </div>
           </div>
         </div>
-
+          <div>
+            <p>{message}</p>
+          </div>
+          
         </div>
+
         <div className="player-scores">
 
             <div className="P-score">

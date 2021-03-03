@@ -79,17 +79,14 @@
 }
 
 .game-box-middle {
+  border: solid hotpink;
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
+  align-items: center;
 }
 
-.all-dice {
-  border: #e6d2b1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #e6d2b1;
-}
+
 
 
 .die > button {
@@ -129,4 +126,19 @@
 
 .win-item {
   /* border: solid pink; */
+}
+
+.scoring > ul, h3 {
+  list-style: none;
+  text-align: center;
+}
+
+.scoring > ul {
+  text-align: left;
+  font-size: small;
+  
+}
+
+.scoring li {
+  font-weight: lighter;
 }

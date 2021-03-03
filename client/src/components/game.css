@@ -8,14 +8,20 @@
 .all-dice {
     display: flex;
     flex-wrap: wrap;
-    width: 400px;
-    height: 200px;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+    min-width: 200px;
 }
+/* .all-dice {
+    border: #e6d2b1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e6d2b1;
+    width: 70%;
+  } */
 
 .player-scores {
     display: flex;
+    flex-direction: row;
     justify-content: center;
 }
 
@@ -59,6 +65,15 @@
     margin: 5px;
     background-color: #EFE5D4; 
 }
+/* 
+.scoring > ul, h3 {
+    list-style: none;
+    text-align: center;
+}
+
+.scoring > ul {
+    text-align: left;
+} */
 
 /* button {
     display: inline-block;
