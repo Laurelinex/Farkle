@@ -6,7 +6,7 @@ import { FaDiceThree } from "react-icons/fa";
 import { FaDiceFour } from "react-icons/fa";
 import { FaDiceFive } from "react-icons/fa";
 import { FaDiceSix } from "react-icons/fa";
-import "./Game.css";
+import "./game.css";
 import Die from "./Die";
 import PlayerOneSelector from './PlayerOneSelector';
 import PlayerTwoSelector from './PlayerTwoSelector';
@@ -74,9 +74,9 @@ const Game = () => {
   // To change for a set message state
   const playerToPlay = () => {
   	if (player1Turn === true) {
-      return " One start your round by rolling the dice.";
+      setWinnerMessage("Player One roll the Dice");
     } else {
-      return " Two start your round by rolling the dice.";
+      setWinnerMessage("Player Two Roll the Dice");
     }
   }
 
@@ -293,10 +293,10 @@ const Game = () => {
       selectedPlayerTwo.wins += 1;
       increaseWinOrLosses(selectedPlayerTwo.playerName, 'wins', selectedPlayerTwo.wins);
       selectedPlayerOne.losses += 1;
-      increaseWinOrLosses(selectedPlayerOne.playerName, 'losses', selectedPlayerOne.losses);
-    } else if (player1Total < 1000 && player2Total < 1000) {
-      setWinnerMessage("...")
-    }
+      increaseWinOrLosses(selectedPlayerOne.playerName, 'losses', selectedPlayerOne.losses);}
+    //  else if (player1Total < 1000 && player2Total < 1000) {
+    //   setWinnerMessage("...")
+    // }
   }
 
   const findTriples = () => {
@@ -351,7 +351,7 @@ const Game = () => {
     let isFarkle = !findTriples() && !checkOne() && !checkFive();
     if (isFarkle === true) {
       console.log("you farkled it up");
-      setMessage("you farkled it up");
+      setMessage("You farkled it up! Next player!");
       console.log("switching to player2")
       setRoundScore(0);
       switchPlayer();
@@ -373,7 +373,7 @@ const Game = () => {
         
         <PlayerForm />    
 
-        <h3>Player{playerToPlay()}</h3>
+        {/* <h3>Player{playerToPlay()}</h3> */}
         {/* <p className="winner">Winner: {alertWinner()}</p>   */}
         <p className="winner">Winner: {winnerMessage}</p>
 
