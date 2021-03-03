@@ -9,6 +9,11 @@ import './Leaderboard.css';
 const Leaderboard = () => {
 
     const [players, setPlayers] = useState([]);
+    // const [selectedPlayerOne, setSelectedPlayerOne] = useState(0); 
+
+    // const handleSelectedPlayerOne = (selectedPlayerOne) => {
+    //     setSelectedPlayerOne(selectedPlayerOne)
+    // }
 
     const sortPlayersByWins = players => {
         const len = players.length;
