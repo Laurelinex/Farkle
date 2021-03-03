@@ -375,7 +375,7 @@ const Game = () => {
     let isFarkle = !findTriples() && !checkOne() && !checkFive();
     if (isFarkle === true) {
       console.log("you farkled it up");
-      setMessage("you farkled it up!");
+      setMessage("You farkled it up!");
       console.log("switching to player2")
       setRoundScore(0);
       switchPlayer();
@@ -390,11 +390,20 @@ const Game = () => {
       <div className="game">
 
         <div className="player-selectors">
+          <div className="selector">
           <div>Player One</div>
+          {/* <label htmlFor="player-form">Player One</label> */}
           <PlayerOneSelector players={players} onPlayerSelected={handleSelectedPlayerOne} />
+          </div>
+
+          <div className="selector">
           <div>Player Two</div>
+          {/* <label htmlFor="player-form">Player Two</label> */}
           <PlayerTwoSelector players={players} onPlayerSelected={handleSelectedPlayerTwo} />
+          </div>
+          <div>
           <PlayerForm />  
+          </div>
         </div>
 
         <div className="game-box-flex">
@@ -404,8 +413,10 @@ const Game = () => {
           <div className="game-box-middle">
 
             <div className="scoring">
-              <h3>Scoring</h3>
+              <h4>Scoring</h4>
                   <ul>
+                      {/* <li>Scoring</li>
+                      <br></br> */}
                       <li>1x Five: 50 each</li>
                       <li>1x One: 100 each</li>
                       <li>3x Ones: 1000</li>

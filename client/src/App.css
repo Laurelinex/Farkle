@@ -79,7 +79,7 @@
 }
 
 .game-box-middle {
-  border: solid hotpink;
+  /* border: solid hotpink; */
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -124,13 +124,14 @@
   box-shadow: 20px 38px 34px -26px;
 }
 
-.win-item {
-  /* border: solid pink; */
-}
+/* .win-item {
+  border: solid pink;
+} */
 
 .scoring > ul, h3 {
   list-style: none;
   text-align: center;
+  padding: 0;
 }
 
 .scoring > ul {

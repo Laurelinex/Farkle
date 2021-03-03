@@ -1,14 +1,16 @@
 .player-selectors {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    padding: 20px;
+    padding-bottom: 20px;
+    padding-top: 10px;
 }
 
 .all-dice {
     display: flex;
     flex-wrap: wrap;
     min-width: 200px;
+    max-width: 400px;
 }
 /* .all-dice {
     border: #e6d2b1;
@@ -31,6 +33,11 @@
     padding: 10px;
     margin: 5px;
     background-color: #EFE5D4;
+}
+
+p.winner {
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 .P-score > p, h4 {
@@ -65,6 +72,12 @@
     margin: 5px;
     background-color: #EFE5D4; 
 }
+
+.selector {
+    display: flex;
+    flex-direction: column;
+    /* margin: 20px; */
+}
 /* 
 .scoring > ul, h3 {
     list-style: none;
@@ -84,5 +97,15 @@
     width: 104px;
 } */
 
+.player-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
+.player-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 

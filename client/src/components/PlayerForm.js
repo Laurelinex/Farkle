@@ -36,7 +36,8 @@ const PlayerForm = () => {
         <form onSubmit={handleSubmit} className="player-form">
 
             <div className="player-input">
-            <label htmlFor="player-form">New Player Name:</label>
+                
+            <label htmlFor="player-form">New Player Name</label>
                 <input
                     maxLength={20}
                     className="input"
@@ -46,8 +47,9 @@ const PlayerForm = () => {
                     onChange={handlePlayerName}
                     required
                 />
-                <input type="submit" name="submit" value="Save" />
             </div>
+                <input className="button" type="submit" name="submit" value="Save" />
+            
         
             {/* <div className="player-input">
             <label htmlFor="player1-form">Player One:</label>
