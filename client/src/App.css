@@ -51,8 +51,13 @@
 } */
 
 .footer {
-  border: solid greenyellow;
+  /* border: solid greenyellow; */
   grid-area: footer;
+}
+
+.footer > p {
+  padding-top: 20px;
+  color: #EFE5D4;
 }
 
 .game {
@@ -113,7 +118,6 @@
 }
 
 .leaderboard {
-  border: solid orange;
   grid-area: leaderboard;
   min-width: 200px;
   border: solid 5px #3E1511;
@@ -124,5 +128,5 @@
 }
 
 .win-item {
-  border: solid pink;
+  /* border: solid pink; */
 }
