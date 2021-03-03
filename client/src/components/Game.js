@@ -52,10 +52,10 @@ const Game = () => {
 
   const onClickRollDice = () => {
 
-    let tempRoundScore = 0;
-    tempRoundScore = roundScore + rollScore;
-    setRoundScore(tempRoundScore);
-    setRollScore(0);
+    // let tempRoundScore = 0;
+    // tempRoundScore = roundScore + rollScore;
+    // setRoundScore(tempRoundScore);
+    // setRollScore(0);
 
     for (var i = 0; i < 6; i++) {
 			if (diceArray[i].active === 1) {
@@ -64,10 +64,12 @@ const Game = () => {
 		}
 
     let hotDice = checkActiveDice();
-      if (hotDice = true){
+      if (hotDice === true){
+        rollScoreReset();
         rollDice();
         getFarkleStatus();
       } else {
+        rollScoreReset();
         setUpDiceArray();
         rollDice();
       }
@@ -89,6 +91,13 @@ const Game = () => {
       arr.push(diceArray[i]) 
     }
     setDiceArray(arr);
+  }
+
+  const rollScoreReset = () => {
+    let tempRoundScore = 0;
+    tempRoundScore = roundScore + rollScore;
+    setRoundScore(tempRoundScore);
+    setRollScore(0);
   }
 
   const onSelectedDie = (die) => {
@@ -305,6 +314,7 @@ const Game = () => {
       console.log("you farkled it up");
       setMessage("you farkled it up");
       console.log("switching to player2")
+      setRoundScore(0);
       switchPlayer();
       setUpDiceArray()
     } else {
