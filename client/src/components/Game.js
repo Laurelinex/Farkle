@@ -83,9 +83,9 @@ const Game = () => {
   // To change for a set message state
   const playerToPlay = () => {
   	if (player1Turn === true) {
-      return " One start your round by rolling the dice.";
+      return `${playerOneName}'s turn`;
     } else {
-      return " Two start your round by rolling the dice.";
+      return `${playerTwoName}'s turn`;
     }
   }
 
@@ -408,7 +408,7 @@ const Game = () => {
 
         <div className="game-box-flex">
           
-            <h3 className="game-box-top">Player{playerToPlay()}</h3>
+            <h3 className="game-box-top">{playerToPlay()}</h3>
 
           <div className="game-box-middle">
 
@@ -425,9 +425,9 @@ const Game = () => {
                       <li>3x Fours: 400</li>
                       <li>3x Fives: 500</li>
                       <li>3x Sixes: 600</li>
-                      <li>Four of a Kind: multiply by 2</li>
-                      <li>Five of a Kind: multiply by 3</li>
-                      <li>Six of a Kind: multiply by 4</li>
+                      <li>Four of a Kind: * by 2</li>
+                      <li>Five of a Kind: * by 3</li>
+                      <li>Six of a Kind: * by 4</li>
                   </ul>
             </div>
 
