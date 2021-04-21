@@ -1,4 +1,8 @@
-# Project Brief
+# Farkle Project Brief
+
+<img src="https://github.com/Laurelinex/W9_FarkleProject/blob/main/client/src/images/Farkle_logo.png">
+
+Hear ye, hear ye! From medieval times comes a Bohemian game of chance for peasants and noblemen alike.
 
 ## Introduction
 
