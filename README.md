@@ -41,3 +41,21 @@ A user should be able to play a game of Farkle:
 - Add to scoring logic: small and large straight
 - Scrap max 6 rounds - implement Hot Dice
 - Play against computer
+
+<h3>Instructions to run the app</h3>
+
+- Clone repo
+- cd client
+- npm install
+- npm start (should run at localhost:3000)
+- cd server
+- npm run seeds
+- npm run server:dev
+
+<h3>Technologies Used</h3>
+JavaScript, HTML, CSS, React, Express, MongoDB
+
+<h3>Screenshots of application</h3>
+
+<img src="https://github.com/Laurelinex/W9_FarkleProject/blob/main/client/src/images/f_1_intro.png">
+<img src="https://github.com/Laurelinex/W9_FarkleProject/blob/main/client/src/images/f_2_scoring.png">
